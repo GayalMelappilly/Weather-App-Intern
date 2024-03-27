@@ -10,7 +10,7 @@ function Display() {
     useEffect(()=>{
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`).then((response)=>{
             console.log("CITY : "+city)
-            console.log(response.data())
+            console.log(response.data)
         }).catch((err)=>{
             console.log(err.message)
         })
