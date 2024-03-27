@@ -1,12 +1,18 @@
 import './App.css';
 import Header from './Components/Header/Header';
 import Display from './Components/Display/Display';
+import Footer from './Components/Footer/Footer';
+
+
 
 function App() {
   return (
-    <div className='app h-full bg-blue-200'>
+    <div className='app h-full bg-cyan-500'>
       <Header></Header>
-      <Display></Display>
+      <div className='container h-screen'>
+        <Display></Display>
+        <Footer></Footer>
+      </div>
     </div>
   );
 }
