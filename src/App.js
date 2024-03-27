@@ -1,10 +1,12 @@
 import './App.css';
 import Header from './Components/Header/Header';
+import Display from './Components/Display/Display';
 
 function App() {
   return (
-    <div className='app h-screen bg-indigo-950'>
+    <div className='app h-full bg-blue-200'>
       <Header></Header>
+      <Display></Display>
     </div>
   );
 }
