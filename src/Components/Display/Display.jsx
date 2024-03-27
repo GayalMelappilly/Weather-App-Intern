@@ -12,6 +12,7 @@ function Display() {
     const [city, setCity] = useState('')
     const [input, setInput] = useState('')
     const [details, setDetails] = useState(null)
+    const [forecast, getForecast] = useState([''])
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`).then((response) => {
@@ -22,6 +23,8 @@ function Display() {
         }).catch((err) => {
             console.log(err.message)
         })
+
+        axios.get(``)
     }, [city])
 
     return (
@@ -41,7 +44,7 @@ function Display() {
                 <div className="py-2"></div>
                 <div className='px-10 bg-white bg-opacity-10 h-5/6 rounded-lg shadow-lg shadow-black-400'>
                     {details && <div className='flex justify-start'>
-                        <img className='h-3/6' src={`https://openweathermap.org/img/wn/${details.weather[0].icon}@2x.png`} alt="" />
+                        <img className='h-5/6' src={`https://openweathermap.org/img/wn/${details.weather[0].icon}@2x.png`} alt="" />
                         <p className='py-6 putfit-bold font-thin text-4xl'>{details.main.temp}°C</p>
                     </div>}
                 </div>
