@@ -11,3 +11,19 @@
   font-weight: 400;
   font-style: normal;
 }
+
+/* .bg-design{
+  height: 100px;
+  width: 100px;
+  background-color: #ff0000;
+  border-radius: 100%;
+  top: 16rem;
+  left: 20rem;
+} */
+
+*{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}

@@ -17,10 +17,10 @@ function Display() {
     },[city])
 
     return (
-
-        <div className='mx-auto h-5/6 flex justify-center c py-10 shadow-lg shadow-black-400 w-5/6 rounded-lg'>
+ 
+        <div className='mx-auto h-5/6 flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg'>
             <div className='w-5/12'>
-                <div className='px-10 bg-cyan-500 h-4/6 rounded-lg shadow-lg shadow-black-400'>
+                <div className='px-10 bg-transparent h-4/6 rounded-lg shadow-lg shadow-black-400'>
                     <div>
                         <label className='outfit-regular pb-10' htmlFor="city">&nbsp;City</label>
                         <br />
@@ -29,7 +29,7 @@ function Display() {
                     </div>
                 </div>
                 <div className="py-2"></div>
-                <div className='px-10 bg-cyan-500 h-2/6 rounded-lg shadow-lg shadow-black-400'>
+                <div className='px-10 bg-transparent h-2/6 rounded-lg shadow-lg shadow-black-400'>
                     <h1>Dipsplay</h1>
                 </div>
             </div>
@@ -37,11 +37,11 @@ function Display() {
             <div className='px-2'></div>
 
             <div className="w-6/12">
-                <div className='px-10 bg-cyan-500 h-2/6 rounded-lg shadow-lg shadow-black-400'>
+                <div className='px-10 bg-transparent h-2/6 rounded-lg shadow-lg shadow-black-400'>
                     <h1>Dipsplay</h1>
                 </div>
                 <div className="py-2"></div>
-                <div className='px-10 bg-cyan-500 h-4/6  rounded-lg shadow-lg shadow-black-400'>
+                <div className='px-10 bg-transparent h-4/6  rounded-lg shadow-lg shadow-black-400'>
                     <h1>Dipsplay</h1>
                 </div>
             </div>
