@@ -3,16 +3,22 @@ import axios from 'axios'
 import { API_KEY } from '../../Constants/constants'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
+import { BsWind, BsDroplet } from "react-icons/bs";
+import { WiBarometer } from "react-icons/wi";
+
 
 
 function Display() {
     const [city, setCity] = useState('')
     const [input, setInput] = useState('')
+    const [details, setDetails] = useState(null)
 
     useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`).then((response) => {
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`).then((response) => {
             console.log("CITY : " + city)
             console.log(response.data)
+            setDetails(response.data)
+
         }).catch((err) => {
             console.log(err.message)
         })
@@ -34,7 +40,10 @@ function Display() {
                 </div>
                 <div className="py-2"></div>
                 <div className='px-10 bg-white bg-opacity-10 h-5/6 rounded-lg shadow-lg shadow-black-400'>
-                    <h1></h1>
+                    {details && <div className='flex justify-start'>
+                        <img className='h-3/6' src={`https://openweathermap.org/img/wn/${details.weather[0].icon}@2x.png`} alt="" />
+                        <p className='py-6 putfit-bold font-thin text-4xl'>{details.main.temp}°C</p>
+                    </div>}
                 </div>
             </div>
 
@@ -42,7 +51,24 @@ function Display() {
 
             <div className="w-6/12">
                 <div className='px-10 bg-white bg-opacity-10 h-2/6 rounded-lg shadow-lg shadow-black-400'>
-                    <h1></h1>
+                    {details && <div className='flex items-center'>
+                        <div className='px-3'>
+                            <BsWind />
+                            <p>{details.wind.speed}km/h</p>
+                        </div>
+                        <div className='px-3'>
+                            <BsDroplet />
+                            <p>{details.main.humidity}%</p>
+                        </div>
+                        <div className='px-3'>
+                            <p>Temperature</p>
+                            <p>{details.main.temp}°C</p>
+                        </div>
+                        <div className='px-3'>
+                            <WiBarometer />
+                            <p>{details.main.pressure}</p>
+                        </div>
+                    </div>}
                 </div>
                 <div className="py-2"></div>
                 <div className='px-10 bg-white bg-opacity-10 h-4/6  rounded-lg shadow-lg shadow-black-400'>
