@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
 import { BsWind, BsDroplet } from "react-icons/bs";
 import { WiBarometer } from "react-icons/wi";
+import logo from '../../assets/Icons/Group1.png'
 
 
 
@@ -44,7 +45,7 @@ function Display() {
                 <div className="py-2"></div>
                 <div className='px-10 bg-white bg-opacity-10 h-5/6 rounded-lg shadow-lg shadow-black-400'>
                     {details && <div className='flex justify-start'>
-                        <img className='h-5/6' src={`https://openweathermap.org/img/wn/${details.weather[0].icon}@2x.png`} alt="" />
+                        <img className='h-5/6' src={logo} alt="" sizes='16'/>
                         <p className='py-6 putfit-bold font-thin text-4xl'>{details.main.temp}°C</p>
                     </div>}
                 </div>
@@ -56,11 +57,11 @@ function Display() {
                 <div className='px-10 bg-white bg-opacity-10 h-2/6 rounded-lg shadow-lg shadow-black-400'>
                     {details && <div className='flex items-center'>
                         <div className='px-3'>
-                            <BsWind />
+                            <BsWind size={30}/>
                             <p>{details.wind.speed}km/h</p>
                         </div>
                         <div className='px-3'>
-                            <BsDroplet />
+                            <BsDroplet size={30}/>
                             <p>{details.main.humidity}%</p>
                         </div>
                         <div className='px-3'>
@@ -68,7 +69,7 @@ function Display() {
                             <p>{details.main.temp}°C</p>
                         </div>
                         <div className='px-3'>
-                            <WiBarometer />
+                            <WiBarometer size={30}/>
                             <p>{details.main.pressure}</p>
                         </div>
                     </div>}
