@@ -1,46 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { API_KEY } from '../../Constants/constants'
+import { detailsContext } from '../../Context/Context'
 
 function Forecast(props) {
-  const [forecast, setForecast] = useState([null])
+  const [forecast, setForecast] = useState([])
   const [dailyForecast, setDailyForecast] = useState()
-  // const [lat, setLat] = useState()
-  // const [lon, setLon] = useState()
+  const { data } = useContext(detailsContext)
 
-  // setLat(props.lat)
-  // setLon(props.lon)
   useEffect(() => {
-    const getData = async () => {
-      await axios.get((`https://api.openweathermap.org/data/2.5/forecast?lat=${props.lat}&lon=${props.lon}&appid=${API_KEY}`)).then((response) => {
-        setForecast(response.data.list)
-        console.log('FORECAST : ' + forecast)
-      })
-    }
-    getData()
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${API_KEY}`).then((response) => {
+      setForecast(response.data)
+      console.log('FORECAST : ' + forecast)
+    }).catch((err) => {
+      console.log(err.message)
+    })
+  }, [data])
 
-    if (forecast[0].sys.pod === 'd') {
-      setDailyForecast({
-        day1: forecast[0],
-        day2: forecast[4],
-        day3: forecast[12],
-        day4: forecast[20],
-        day5: forecast[28],
-        day6: forecast[36]
-      })
-    } else if (forecast[0].sys.pod === 'n') {
-      setDailyForecast({
-        day1: forecast[0],
-        day2: forecast[8],
-        day3: forecast[16],
-        day4: forecast[24],
-        day5: forecast[32],
-        day6: forecast[40]
-      })
-    }
+  // if (firstElement.sys.pod === 'd') {
+  //   setDailyForecast({
+  //     day1: forecast[0],
+  //     day2: forecast[4],
+  //     day3: forecast[12],
+  //     day4: forecast[20],
+  //     day5: forecast[28],
+  //     day6: forecast[36]
+  //   })
+  // } else if (firstElement.sys.pod === 'n') {
+  //   setDailyForecast({
+  //     day1: forecast[0],
+  //     day2: forecast[8],
+  //     day3: forecast[16],
+  //     day4: forecast[24],
+  //     day5: forecast[32],
+  //     day6: forecast[40]
+  //   })
+  // }
 
-    console.log(dailyForecast)
-  }, [props.lat, props.lon])
+  // console.log(dailyForecast)
 
   // forecast.map((list)=>{
   //   console.log(list.dt, list.dt_txt)

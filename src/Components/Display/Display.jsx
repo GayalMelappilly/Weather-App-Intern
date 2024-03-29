@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
-import { API_KEY, TIME_API_KEY } from '../../Constants/constants'
+import { API_KEY } from '../../Constants/constants'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
 import { BsWind, BsDroplet, BsThermometer } from "react-icons/bs";
 import { SlSpeedometer } from "react-icons/sl";
 import Icon from '../Icon/Icon'
 import Forecast from '../Forecast/Forecast'
+import { detailsContext } from '../../Context/Context'
 
 function Display() {
     const [city, setCity] = useState('')
     const [input, setInput] = useState('')
     const [details, setDetails] = useState(null)
-    const [forecast, getForecast] = useState([''])
+    const [forecast, setForecast] = useState('')
     const [time, setTime] = useState(null)
+
+    const {setData} = useContext(detailsContext)
 
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`).then((response) => {
             console.log(response.data)
             setDetails(response.data)
+            setData(response.data)
         }).catch((err) => {
-            console.log(err.message)
+            console.log("ERR : "+err.message)
         })
     }, [city])
 
@@ -73,7 +77,7 @@ function Display() {
                         </div>
 
                         <div className="forecast">
-                            <Forecast lat={details.coord.lat} lon={details.coord.lon} />
+                            <Forecast />
                         </div>
                     </div>}
                 </div>
