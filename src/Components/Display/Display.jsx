@@ -3,9 +3,10 @@ import axios from 'axios'
 import { API_KEY, TIME_API_KEY } from '../../Constants/constants'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
-import { BsWind, BsDroplet, BsArrowDownRightSquare } from "react-icons/bs";
+import { BsWind, BsDroplet, BsThermometer } from "react-icons/bs";
 import { SlSpeedometer } from "react-icons/sl";
 import Icon from '../Icon/Icon'
+import Forecast from '../Forecast/Forecast'
 
 function Display() {
     const [city, setCity] = useState('')
@@ -17,14 +18,8 @@ function Display() {
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`).then((response) => {
-            console.log("CITY : " + city)
             console.log(response.data)
             setDetails(response.data)
-            
-            
-
-        console.log("TIMEZONE : "+details.timezone)
-        console.log("TIME : "+time)
         }).catch((err) => {
             console.log(err.message)
         })
@@ -40,7 +35,6 @@ function Display() {
     
     const convertToStandardTime = (timezoneOffset) => {
         const offsetSeconds = timezoneOffset;
-        const date = new Date();
         const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
         const standardTime = new Date(utc + (offsetSeconds * 1000));
         return standardTime.toLocaleTimeString('en-US',{
@@ -77,6 +71,10 @@ function Display() {
                             <p className='font-thin text-xl'>{formattedDate}</p>
                             <p className='font-thin text-xl'>{convertToStandardTime(details.timezone)}</p>
                         </div>
+
+                        <div className="forecast">
+                            <Forecast lat={details.coord.lat} lon={details.coord.lon} />
+                        </div>
                     </div>}
                 </div>
             </div>
@@ -85,18 +83,22 @@ function Display() {
 
             <div className="w-6/12">
                 <div className='px-10 bg-white w-full bg-opacity-10 h-2/6 rounded-lg shadow-lg shadow-black-400'>
-                    {details && <div className='font-regular flex justify-around'>
+                    {details && <div className='font-regular h-full text-xl flex justify-between place-items-center'>
                         <div className='px-3'>
-                            <BsWind size={30} />
+                            <BsWind size={40} className='mx-auto'/>
                             <p className='text-center'>{details.wind.speed}km/h</p>
                         </div>
                         <div className='px-3'>
-                            <BsDroplet size={30} />
-                            <p>{details.main.humidity}%</p>
+                            <BsDroplet size={40} className='mx-auto' />
+                            <p className='text-center'>{details.main.humidity}%</p>
+                        </div>
+                        <div>
+                            <BsThermometer size={40} className='mx-auto' />
+                            <p>{details.main.temp}°C</p>
                         </div>
                         <div className='px-3'>
-                            <SlSpeedometer size={30} />
-                            <p>{details.main.pressure} hPa</p>
+                            <SlSpeedometer size={40} className='mx-auto' />
+                            <p className='text-center'>{details.main.pressure} hPa</p>
                         </div>
                     </div>}
                 </div>
