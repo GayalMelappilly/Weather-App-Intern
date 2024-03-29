@@ -44,7 +44,7 @@ function Icon(props) {
         case '13n': return <W13n className='h-40 pl-4' />
         case '50d': return <W50d className='h-40 pl-4' />
         case '50n': return <W50n className='h-40 pl-4' />
-        case 'barometer' : return <Barometer className='h-40 pl-4' />
+        // case 'barometer' : return <Barometer className='h-20 pl-4' />
     }
 }
 

@@ -3,8 +3,8 @@ import axios from 'axios'
 import { API_KEY, TIME_API_KEY } from '../../Constants/constants'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
-import { BsWind, BsDroplet } from "react-icons/bs";
-import { WiBarometer } from "react-icons/wi";
+import { BsWind, BsDroplet, BsArrowDownRightSquare } from "react-icons/bs";
+import { SlSpeedometer } from "react-icons/sl";
 import Icon from '../Icon/Icon'
 
 function Display() {
@@ -20,16 +20,14 @@ function Display() {
             console.log("CITY : " + city)
             console.log(response.data)
             setDetails(response.data)
-            // axios.get(`http://api.timezonedb.com/v2.1/get-time-zone?key=${TIME_API_KEY}&format=json&by=position&lat=${details.coord.lat}&lng=${details.coord.lon}`).then((res) => {
-            //     // console.log(res.data.formatted)
-            //     console.log(tConvert(res.data.formatted))
-            //     setTime(res.data.formatted)
-            // })
+            
+            
+
+        console.log("TIMEZONE : "+details.timezone)
+        console.log("TIME : "+time)
         }).catch((err) => {
             console.log(err.message)
         })
-
-
     }, [city])
 
     const date = new Date();
@@ -38,11 +36,19 @@ function Display() {
         month: 'long',
         day: '2-digit'
     });
-    const am_pm = date.toLocaleTimeString('en-GB',{
-        hour: '2-digit',
-        minute: '2-digit',
-        hourCycle: 'h12'
-    });
+
+    
+    const convertToStandardTime = (timezoneOffset) => {
+        const offsetSeconds = timezoneOffset;
+        const date = new Date();
+        const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
+        const standardTime = new Date(utc + (offsetSeconds * 1000));
+        return standardTime.toLocaleTimeString('en-US',{
+            hour: '2-digit',
+            minute: '2-digit',
+            hourCycle: 'h12'
+        });
+    };
 
 
     return (
@@ -62,7 +68,6 @@ function Display() {
                 <div className="py-2"></div>
                 <div className='bg-white bg-opacity-10 h-5/6 rounded-lg shadow-lg shadow-black-400'>
                     {details && <div className='flex justify-start'>
-                        {console.log(details.weather[0].icon)}
                         <Icon icon={details.weather[0].icon} />
                         <div className='pt-10 pl-3'>
                             <p className='font-thin text-3xl'>{details.main.temp}°C</p>
@@ -70,7 +75,7 @@ function Display() {
                         </div>
                         <div className='pt-12 pl-8 '>
                             <p className='font-thin text-xl'>{formattedDate}</p>
-                            <p className='font-thin text-xl'>{am_pm}</p>
+                            <p className='font-thin text-xl'>{convertToStandardTime(details.timezone)}</p>
                         </div>
                     </div>}
                 </div>
@@ -79,23 +84,19 @@ function Display() {
             <div className='px-2'></div>
 
             <div className="w-6/12">
-                <div className='px-10 bg-white bg-opacity-10 h-2/6 rounded-lg shadow-lg shadow-black-400'>
-                    {details && <div className='flex items-center font-regular flex justify-center'>
+                <div className='px-10 bg-white w-full bg-opacity-10 h-2/6 rounded-lg shadow-lg shadow-black-400'>
+                    {details && <div className='font-regular flex justify-around'>
                         <div className='px-3'>
                             <BsWind size={30} />
-                            <p>{details.wind.speed}km/h</p>
+                            <p className='text-center'>{details.wind.speed}km/h</p>
                         </div>
                         <div className='px-3'>
                             <BsDroplet size={30} />
                             <p>{details.main.humidity}%</p>
                         </div>
                         <div className='px-3'>
-                            <p>Temperature</p>
-                            <p>{details.main.temp}°C</p>
-                        </div>
-                        <div className='px-3'>
-                            <Icon icon='barometer' />
-                            <p>{details.main.pressure}</p>
+                            <SlSpeedometer size={30} />
+                            <p>{details.main.pressure} hPa</p>
                         </div>
                     </div>}
                 </div>

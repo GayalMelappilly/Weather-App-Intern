@@ -8,7 +8,7 @@ import Footer from './Components/Footer/Footer';
 function App() {
   return (
     <div className='app w-full bg-gradient-to-br from-cyan-300 to-gray-50'>
-      <div className='container'>
+      <div>
       {/* <div className='bg-design relative'></div> */}
         <Header></Header>
         <div className='h-screen'>
