@@ -13,7 +13,7 @@ function Display() {
     const [city, setCity] = useState('')
     const [input, setInput] = useState('')
     const [details, setDetails] = useState(null)
-    const [forecast, setForecast] = useState('')
+    const [forecast, setForecast] = useState([])
     const [time, setTime] = useState(null)
 
     const {setData} = useContext(detailsContext)
@@ -24,10 +24,24 @@ function Display() {
             console.log(response.data)
             setDetails(response.data)
             setData(response.data)
+
+            fetchForecast(response.data.coord.lat, response.data.coord.lon);
         }).catch((err) => {
             console.log("ERR : "+err.message)
         })
     }, [city])
+
+    const fetchForecast = (lat, lon) => {
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+            .then((response) => {
+                console.log("FORECAST /1 : "+response.data.list);
+                setForecast(response.data);
+                setData(response.data.list);
+            })
+            .catch((err) => {
+                console.log("ERR : " + err.message);
+            });
+    };
 
     const date = new Date();
     const formattedDate = date.toLocaleDateString('en-GB', {
@@ -77,7 +91,7 @@ function Display() {
                         </div>
 
                         <div className="forecast">
-                            <Forecast />
+                            <Forecast data={forecast} />
                         </div>
                     </div>}
                 </div>

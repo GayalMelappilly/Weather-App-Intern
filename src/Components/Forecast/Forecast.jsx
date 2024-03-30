@@ -5,39 +5,47 @@ import { detailsContext } from '../../Context/Context'
 
 function Forecast(props) {
   const [forecast, setForecast] = useState([])
+  const [pod, setPod] = useState(null)
   const [dailyForecast, setDailyForecast] = useState()
   const { data } = useContext(detailsContext)
 
+  // setForecast(data)
+  // console.log('DATA : ' + forecast)
+
+
   useEffect(() => {
-    axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${API_KEY}`).then((response) => {
-      setForecast(response.data)
-      console.log('FORECAST : ' + forecast)
-    }).catch((err) => {
-      console.log(err.message)
-    })
-  }, [data])
+    if (data && Array.isArray(data)) {
+      setForecast(data);
+    }
+  }, [data]);
 
-  // if (firstElement.sys.pod === 'd') {
-  //   setDailyForecast({
-  //     day1: forecast[0],
-  //     day2: forecast[4],
-  //     day3: forecast[12],
-  //     day4: forecast[20],
-  //     day5: forecast[28],
-  //     day6: forecast[36]
-  //   })
-  // } else if (firstElement.sys.pod === 'n') {
-  //   setDailyForecast({
-  //     day1: forecast[0],
-  //     day2: forecast[8],
-  //     day3: forecast[16],
-  //     day4: forecast[24],
-  //     day5: forecast[32],
-  //     day6: forecast[40]
-  //   })
-  // }
+  useEffect(() => {
+    setPod(forecast[0].sys.pod)
 
-  // console.log(dailyForecast)
+    if (pod === 'd') {
+      setDailyForecast({
+        day1: forecast[0],
+        day2: forecast[4],
+        day3: forecast[12],
+        day4: forecast[20],
+        day5: forecast[28],
+        day6: forecast[36]
+      })
+    } else if (pod === 'n') {
+      setDailyForecast({
+        day1: forecast[0],
+        day2: forecast[8],
+        day3: forecast[16],
+        day4: forecast[24],
+        day5: forecast[32],
+        day6: forecast[40]
+      })
+    }
+    console.log(dailyForecast)
+  }, [forecast]);
+
+
+  
 
   // forecast.map((list)=>{
   //   console.log(list.dt, list.dt_txt)
