@@ -123,7 +123,7 @@ function Display() {
                 </div>
                 <div className="py-2"></div>
                 <div className='px-10 bg-white bg-opacity-10 h-4/6  rounded-lg shadow-lg shadow-black-400'>
-                    <Graph />
+                    {/* <Graph /> */}
                 </div>
             </div>
         </div>
