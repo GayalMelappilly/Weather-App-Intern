@@ -1,45 +1,57 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, ColumnSeries, Category, Selection, Legend, RangeColorSettingsDirective, RangeColorSettingDirective } from '@syncfusion/ej2-react-charts';
-function Graph() {
-    const data = [
-        { x: "Jan", y: 6.96 },
-        { x: "Feb", y: 8.9 },
-        { x: "Mar", y: 12 },
-        { x: "Apr", y: 17.5 },
-        { x: "May", y: 22.1 },
-        { x: "June", y: 25 },
-        { x: "July", y: 29.4 },
-        { x: "Aug", y: 29.6 },
-        { x: "Sep", y: 25.8 },
-        { x: "Oct", y: 21.1 },
-        { x: "Nov", y: 15.5 },
-        { x: "Dec", y: 9.9 }
-    ];
-    const color1 = ['#F9D422'];
-    const color2 = ['#F28F3F'];
-    const color3 = ['#E94F53'];
-    return <ChartComponent id='charts' style={{ textAlign: "center" }} selectionMode='Point' primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 } }} primaryYAxis={{ lineStyle: { width: 0 },
-            majorTickLines: { width: 0 },
-            minorTickLines: { width: 0 },
-            labelFormat: '{value}°C' }} title="USA CLIMATE - WEATHER BY MONTH" chartArea={{ border: { width: 0 } }} legendSettings={{
-            mode: 'Range',
-            visible: true,
-            toggleVisibility: false
-        }}>
-                        <Inject services={[ColumnSeries, Selection, Category, Legend]}/>
-                        <SeriesCollectionDirective>
-                            <SeriesDirective dataSource={data} name='USA' xName='x' yName='y' type='Column' animation={{ enable: false }} cornerRadius={{
-            topLeft: 10, topRight: 10
-        }}>
-                            </SeriesDirective>
-                        </SeriesCollectionDirective>
-                        <RangeColorSettingsDirective>
-                            <RangeColorSettingDirective label="1°C to 10°C" start={1} end={10} colors={color1}></RangeColorSettingDirective>
-                            <RangeColorSettingDirective label="11°C to 20°C" start={11} end={20} colors={color2}></RangeColorSettingDirective>
-                            <RangeColorSettingDirective label="21°C to 30°C" start={21} end={30} colors={color3}></RangeColorSettingDirective>
-                        </RangeColorSettingsDirective>
-                    </ChartComponent>;
-}
-;
-export default Graph;
+/* App.js */
+import React, { Component } from 'react';
+import CanvasJSReact from '@canvasjs/react-charts';
+//var CanvasJSReact = require('@canvasjs/react-charts');
+ 
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+ 
+function Graph(){
+		const options = {
+			animationEnabled: true,
+			theme: "light2",
+			title: {
+				text: "Growth of Photovoltaics"
+			},
+			axisY: {
+				title: "Capacity (in MWp)",
+				logarithmic: true
+			},
+			data: [{
+				type: "spline",
+				showInLegend: true,
+				legendText: "MWp = one megawatt peak",
+				dataPoints: [
+				  { x: new Date(2001, 0), y: 1615},
+				  { x: new Date(2002, 0), y: 2069},
+				  { x: new Date(2003, 0), y: 2635},
+				  { x: new Date(2004, 0), y: 3723},
+				  { x: new Date(2005, 0), y: 5112},
+				  { x: new Date(2006, 0), y: 6660},
+				  { x: new Date(2007, 0), y: 9183},
+				  { x: new Date(2008, 0), y: 15844},
+				  { x: new Date(2009, 0), y: 23185},
+				  { x: new Date(2010, 0), y: 40336},
+				  { x: new Date(2011, 0), y: 70469},
+				  { x: new Date(2012, 0), y: 100504},
+				  { x: new Date(2013, 0), y: 138856},
+				  { x: new Date(2014, 0), y: 178391},
+				  { x: new Date(2015, 0), y: 229300},
+				  { x: new Date(2016, 0), y: 302300},
+				  { x: new Date(2017, 0), y: 405000}   
+				]
+			}]
+		}
+		
+		return (
+		<div>
+			<CanvasJSChart options = {options} 
+				/* onRef={ref => this.chart = ref} */
+			/>
+			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+		</div>
+		);
+	}
+
+ 
+export default Graph; 

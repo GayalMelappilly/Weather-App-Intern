@@ -26,24 +26,24 @@ import { ReactComponent as Windspeed} from '../../assets/Icons/all/wind.svg'
 function Icon(props) {
 
     switch (props.icon) {
-        case '01d': return <W01d className='h-40 pl-4' />
-        case '01n': return <W01n className='h-40 pl-4' />
-        case '02d': return <W02d className='h-40 pl-4' />
-        case '02n': return <W02n className='h-40 pl-4' />
-        case '03d': return <W03d className='h-40 pl-4' />
-        case '03n': return <W03n className='h-40 pl-4' />
-        case '04d': return <W04d className='h-40 pl-4' />
-        case '04n': return <W04n className='h-40 pl-4' />
-        case '09d': return <W09d className='h-40 pl-4' />
-        case '09n': return <W09n className='h-40 pl-4' />
-        case '10d': return <W10d className='h-40 pl-4' />
-        case '10n': return <W10n className='h-40 pl-4' />
-        case '11d': return <W11d className='h-40 pl-4' />
-        case '11n': return <W11n className='h-40 pl-4' />
-        case '13d': return <W13d className='h-40 pl-4' />
-        case '13n': return <W13n className='h-40 pl-4' />
-        case '50d': return <W50d className='h-40 pl-4' />
-        case '50n': return <W50n className='h-40 pl-4' />
+        case '01d': return props.for ? <W01d className='h-20' /> : <W01d className='h-40 pl-4' />
+        case '01n': return props.for ? <W01n className='h-20' /> : <W01n className='h-40 pl-4' />
+        case '02d': return props.for ? <W02d className='h-20' /> : <W02d className='h-40 pl-4' />
+        case '02n': return props.for ? <W02n className='h-20' /> : <W02n className='h-40 pl-4' />
+        case '03d': return props.for ? <W03d className='h-20' /> : <W03d className='h-40 pl-4' />
+        case '03n': return props.for ? <W03n className='h-20' /> : <W03n className='h-40 pl-4' />
+        case '04d': return props.for ? <W04d className='h-20' /> : <W04d className='h-40 pl-4' />
+        case '04n': return props.for ? <W04n className='h-20' /> : <W04n className='h-40 pl-4' />
+        case '09d': return props.for ? <W09d className='h-20' /> : <W09d className='h-40 pl-4' />
+        case '09n': return props.for ? <W09n className='h-20' /> : <W09n className='h-40 pl-4' />
+        case '10d': return props.for ? <W10d className='h-20' /> : <W10d className='h-40 pl-4' />
+        case '10n': return props.for ? <W10n className='h-20' /> : <W10n className='h-40 pl-4' />
+        case '11d': return props.for ? <W11d className='h-20' /> : <W11d className='h-40 pl-4' />
+        case '11n': return props.for ? <W11n className='h-20' /> : <W11n className='h-40 pl-4' />
+        case '13d': return props.for ? <W13d className='h-20' /> : <W13d className='h-40 pl-4' />
+        case '13n': return props.for ? <W13n className='h-20' /> : <W13n className='h-40 pl-4' />
+        case '50d': return props.for ? <W50d className='h-20' /> : <W50d className='h-40 pl-4' />
+        case '50n': return props.for ? <W50n className='h-20' /> : <W50n className='h-40 pl-4' />
         // case 'barometer' : return <Barometer className='h-20 pl-4' />
     }
 }

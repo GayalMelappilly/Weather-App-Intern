@@ -16,7 +16,7 @@ function Forecast(props) {
 
   useEffect(() => {
     if (data && Array.isArray(data) && data.length > 0) {
-      const firstPod = data[0].sys.pod;
+      const firstPod = data[0].sys && data[0].sys.pod;
       console.log("First Pod:", firstPod);
 
       // Set daily forecast based on forecast data
@@ -43,6 +43,16 @@ function Forecast(props) {
     }
   }, [data]);
 
+  const toDate = (date) => {
+    const cDate = new Date(date);
+    const formattedDate = cDate.toLocaleString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: '2-digit'
+    });
+
+    return formattedDate
+  }
 
   useEffect(() => {
     if (dailyForecast) console.log("DF : " + dailyForecast.day1.main.temp)
@@ -51,19 +61,57 @@ function Forecast(props) {
 
   return (
     <div>
-      {dailyForecast && <div>
-
-        <div class="flex items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <Icon icon={dailyForecast.day1.weather[0].icon} />
-            <div class="flex flex-col justify-between p-4 leading-normal">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-            </div>
+      {/* <div className='px-4'>Forecast</div> */}
+      {dailyForecast && <div className='grid grid-cols-3 gap-2'>
+        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
+          <div className='flex'>
+            <Icon for='forecast' icon={dailyForecast.day1.weather[0].icon} />
+            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day1.main.temp_min.toFixed(0)}° / {dailyForecast.day1.main.temp_max.toFixed(0)}°</p>
+          </div>
+          <p className='text-sm font-thin'>{toDate(dailyForecast.day1.dt_txt.slice(0, 14))}</p>
         </div>
-        
 
+        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
+          <div className='flex'>
+            <Icon for='forecast' icon={dailyForecast.day2.weather[0].icon} />
+            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day2.main.temp_min.toFixed(0)}° / {dailyForecast.day2.main.temp_max.toFixed(0)}°</p>
+          </div>
+          <p className='text-sm font-thin'>{toDate(dailyForecast.day2.dt_txt.slice(0, 14))}</p>
+        </div>
+
+        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
+          <div className='flex'>
+            <Icon for='forecast' icon={dailyForecast.day3.weather[0].icon} />
+            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day3.main.temp_min.toFixed(0)}° / {dailyForecast.day3.main.temp_max.toFixed(0)}°</p>
+          </div>
+          <p className='text-sm font-thin'>{toDate(dailyForecast.day3.dt_txt.slice(0, 14))}</p>
+        </div>
+
+        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
+          <div className='flex'>
+            <Icon for='forecast' icon={dailyForecast.day4.weather[0].icon} />
+            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day4.main.temp_min.toFixed(0)}° / {dailyForecast.day4.main.temp_max.toFixed(0)}°</p>
+          </div>
+          <p className='text-sm font-thin'>{toDate(dailyForecast.day4.dt_txt.slice(0, 14))}</p>
+        </div>
+
+        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
+          <div className='flex'>
+            <Icon for='forecast' icon={dailyForecast.day5.weather[0].icon} />
+            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day5.main.temp_min.toFixed(0)}° / {dailyForecast.day5.main.temp_max.toFixed(0)}°</p>
+          </div>
+          <p className='text-sm font-thin'>{toDate(dailyForecast.day5.dt_txt.slice(0, 14))}</p>
+        </div>
+
+        {dailyForecast.day6 && <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
+          <div className='flex'>
+            <Icon for='forecast' icon={dailyForecast.day6.weather[0].icon} />
+            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day6.main.temp_min.toFixed(0)}° / {dailyForecast.day6.main.temp_max.toFixed(0)}°</p>
+          </div>
+          <p className='text-sm font-thin'>{toDate(dailyForecast.day6.dt_txt.slice(0, 14))}</p>
+        </div>}
       </div>}
-    </div>
+    </div >
   )
 }
 

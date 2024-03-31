@@ -8,36 +8,33 @@ import { SlSpeedometer } from "react-icons/sl";
 import Icon from '../Icon/Icon'
 import Forecast from '../Forecast/Forecast'
 import { detailsContext } from '../../Context/Context'
+import Graph from '../Graph/Graph'
 
 function Display() {
     const [city, setCity] = useState('')
     const [input, setInput] = useState('')
     const [details, setDetails] = useState(null)
     const [forecast, setForecast] = useState([])
-    const [time, setTime] = useState(null)
-
-    const {setData} = useContext(detailsContext)
-
+    const { setData } = useContext(detailsContext)
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`).then((response) => {
             console.log(response.data)
             setDetails(response.data)
-            setData(response.data)
+            // setData(response.data)
 
             fetchForecast(response.data.coord.lat, response.data.coord.lon);
         }).catch((err) => {
-            console.log("ERR : "+err.message)
+            console.log("ERR : " + err.message)
         })
     }, [city])
 
     const fetchForecast = (lat, lon) => {
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
-            .then((response) => {
-                console.log("FORECAST /1 : "+response.data.list);
-                setForecast(response.data);
-                setData(response.data.list);
-            })
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`).then((response) => {
+            console.log("FORECAST /1 : " + response.data.list);
+            setForecast(response.data);
+            setData(response.data.list);
+        })
             .catch((err) => {
                 console.log("ERR : " + err.message);
             });
@@ -50,12 +47,12 @@ function Display() {
         day: '2-digit'
     });
 
-    
+
     const convertToStandardTime = (timezoneOffset) => {
         const offsetSeconds = timezoneOffset;
         const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
         const standardTime = new Date(utc + (offsetSeconds * 1000));
-        return standardTime.toLocaleTimeString('en-US',{
+        return standardTime.toLocaleTimeString('en-US', {
             hour: '2-digit',
             minute: '2-digit',
             hourCycle: 'h12'
@@ -78,7 +75,7 @@ function Display() {
                     </div>
                 </div>
                 <div className="py-2"></div>
-                <div className='bg-white bg-opacity-10 h-5/6 rounded-lg shadow-lg shadow-black-400'>
+                <div className={`bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 h-${forecast ? '2/6' : '4/6' }`}>
                     {details && <div className='flex justify-start'>
                         <Icon icon={details.weather[0].icon} />
                         <div className='pt-10 pl-3'>
@@ -89,11 +86,15 @@ function Display() {
                             <p className='font-thin text-xl'>{formattedDate}</p>
                             <p className='font-thin text-xl'>{convertToStandardTime(details.timezone)}</p>
                         </div>
-
-                        <div className="forecast">
-                            <Forecast data={forecast} />
-                        </div>
                     </div>}
+                </div>
+                <div className="py-2"></div>
+                <div className=''>
+                    <div>
+                    {forecast && <div className="forecast">
+                        <Forecast data={forecast} />
+                    </div>}
+                    </div>
                 </div>
             </div>
 
@@ -103,7 +104,7 @@ function Display() {
                 <div className='px-10 bg-white w-full bg-opacity-10 h-2/6 rounded-lg shadow-lg shadow-black-400'>
                     {details && <div className='font-regular h-full text-xl flex justify-between place-items-center'>
                         <div className='px-3'>
-                            <BsWind size={40} className='mx-auto'/>
+                            <BsWind size={40} className='mx-auto' />
                             <p className='text-center'>{details.wind.speed}km/h</p>
                         </div>
                         <div className='px-3'>
@@ -122,7 +123,7 @@ function Display() {
                 </div>
                 <div className="py-2"></div>
                 <div className='px-10 bg-white bg-opacity-10 h-4/6  rounded-lg shadow-lg shadow-black-400'>
-                    <h1></h1>
+                    <Graph />
                 </div>
             </div>
         </div>
