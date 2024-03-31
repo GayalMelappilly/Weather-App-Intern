@@ -32,7 +32,7 @@ function Display() {
     }, [city])
 
     const fetchForecast = (lat, lon) => {
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
             .then((response) => {
                 console.log("FORECAST /1 : "+response.data.list);
                 setForecast(response.data);
