@@ -11,18 +11,17 @@ import { detailsContext } from '../../Context/Context'
 import Graph from '../Graph/Graph'
 
 function Display() {
-    const [city, setCity] = useState('')
+    const [city, setCity] = useState()
     const [input, setInput] = useState('')
     const [details, setDetails] = useState(null)
     const [forecast, setForecast] = useState([])
-    const { data, setData } = useContext(detailsContext)
+    const {data, setData } = useContext(detailsContext)
 
     useEffect(() => {
+        if (!city) return;
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`).then((response) => {
             console.log(response.data)
             setDetails(response.data)
-            // setData(response.data)
-
             fetchForecast(response.data.coord.lat, response.data.coord.lon);
         }).catch((err) => {
             console.log("ERR : " + err.message)
@@ -31,7 +30,6 @@ function Display() {
 
     const fetchForecast = (lat, lon) => {
         axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`).then((response) => {
-            console.log("FORECAST /1 : " + response.data.list);
             setForecast(response.data);
             setData(response.data.list);
         })
@@ -91,11 +89,7 @@ function Display() {
                 <div className="py-2"></div>
                 
                 <div>
-                    {console.log("FORE : "+data)}
-                { data && <Forecast /> } 
-                   {/* :
-                    <div className='px-10 bg-white bg-opacity-10 h-56 rounded-lg shadow-lg shadow-black-400'>
-                    </div> */}
+                { details && <Forecast /> } 
                 </div>
             </div>
 
@@ -162,4 +156,3 @@ function Display() {
 
 export default Display
 
-//bg-gradient-to-bl from-cyan-400 to-yellow-100

@@ -1,17 +1,12 @@
-import React, { useContext, useDebugValue, useEffect } from 'react'
-import { Chart as ChartJS, defaults } from 'chart.js/auto'
-import { Bar, Doughnut, Line } from 'react-chartjs-2'
+import React, { useContext } from 'react'
+import { Chart as defaults } from 'chart.js/auto'
+import { Line } from 'react-chartjs-2'
 import { detailsContext } from '../../Context/Context'
 
 function Graph(props) {
     defaults.maintainAspectRatio = false
     defaults.responsive = true
     const { graph } = useContext(detailsContext)
-    console.log(props.name)
-    
-    useEffect(()=>{
-        // console.log('ASDSAD : '+graph[0].dt_txt)
-    },[graph])
 
     const toDate = (date) => {
         const cDate = new Date(date);
@@ -28,30 +23,39 @@ function Graph(props) {
         <div className='flex justify-center items-center h-full'>
             <Line
                 data={{
-                    labels: graph.map((obj)=>toDate(obj.dt_txt.slice(0, 14))),
+                    labels: graph.map((obj) => {
+                        if(toDate(obj?.dt_txt?.slice(0, 14)) === "Invalid Date")
+                            return null
+                        else
+                           return toDate(obj?.dt_txt?.slice(0, 14))
+                    }),
                     datasets: [
                         {
                             label: 'Min',
-                            data: graph.map((obj)=>obj.main.temp_min)
+                            data: graph.map((obj) => obj?.main?.temp_min || 0)
                         },
                         {
                             label: 'Max',
-                            data: graph.map((obj)=>obj.main.temp_max)
+                            data: graph.map((obj) => obj?.main?.temp_max || 0)
                         },
                         {
                             label: "Hum",
-                            data: graph.map((obj)=>obj.main.humidity)
+                            data: graph.map((obj) => obj?.main?.humidity || 0)
                         }
                     ]
                 }}
                 options={{
-                    plugins:{
-                        title:{
+                    plugins: {
+                        title: {
                             text: `${props.name}, ${props.country}`
                         }
                     }
                 }}
             />
+
+
+
+
         </div>
     )
 }
