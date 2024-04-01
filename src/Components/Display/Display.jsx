@@ -81,11 +81,11 @@ function Display() {
 
     return (
 
-        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg        max-sm:py-2 '>
-            <div className='w-5/12               max-sm:w-96 max-sm:mx-2 max-sm:h-2/6'>
-                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400          max-sm:px-1 max-sm:w-screen max-sm:ml=8'>
-                    <div className='py-4 relative'>
-                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none           max-sm:w-52 max-sm:h-6' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
+        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg        max-sm:py-2'>
+            <div className='w-5/12                max-sm:mx-3 max-sm:h-2/6'>
+                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400         max-sm:w-11/12 max-sm:px-1 max-sm:ml=8'>
+                    <div className='py-4 relative     max-sm: mx-2'>
+                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none           max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
                         <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
                             <FontAwesomeIcon className='text-white' icon={faSearch} />
                         </div>
