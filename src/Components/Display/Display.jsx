@@ -3,7 +3,7 @@ import axios from 'axios'
 import { API_KEY } from '../../Constants/constants'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
-import { BsWind, BsDroplet, BsThermometer } from "react-icons/bs";
+import { BsWind, BsDroplet, BsThermometer, BsClouds } from "react-icons/bs";
 import { SlSpeedometer } from "react-icons/sl";
 import Icon from '../Icon/Icon'
 import Forecast from '../Forecast/Forecast'
@@ -15,7 +15,7 @@ function Display() {
     const [input, setInput] = useState('')
     const [details, setDetails] = useState(null)
     const [forecast, setForecast] = useState([])
-    const { setData } = useContext(detailsContext)
+    const { data, setData } = useContext(detailsContext)
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`).then((response) => {
@@ -89,56 +89,69 @@ function Display() {
                     </div>}
                 </div>
                 <div className="py-2"></div>
-                <div className=''>
-                    <div>
-                        {forecast && <div className="forecast">
-                            <Forecast data={forecast} />
-                        </div>}
-                    </div>
+                
+                <div>
+                    {console.log("FORE : "+data)}
+                { data && <Forecast /> } 
+                   {/* :
+                    <div className='px-10 bg-white bg-opacity-10 h-56 rounded-lg shadow-lg shadow-black-400'>
+                    </div> */}
                 </div>
             </div>
 
             <div className='px-2'></div>
 
             <div className="w-6/12">
-                <div className='px-10 bg-white w-full bg-opacity-10 h-2/6 rounded-lg shadow-lg shadow-black-400'>
-                    {details && <div className='font-regular h-full text-xl flex justify-between place-items-center'>
-                        <div className='px-3'>
-                            <BsWind size={40} className='mx-auto' />
+                <div>
+                    {details ? <div className='h-full text-xl font-thin flex justify-between items-center'>
+                        <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                            <BsWind size={30} className='mx-auto fill-slate-600' />
                             <p className='text-center'>{details.wind.speed}km/h</p>
                         </div>
-                        <div className='px-3'>
-                            <BsDroplet size={40} className='mx-auto' />
+                        <div className='px-3 py-4 mx-2 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                            <BsDroplet size={30} className='mx-auto fill-slate-600' />
                             <p className='text-center'>{details.main.humidity}%</p>
                         </div>
-                        <div>
-                            <BsThermometer size={40} className='mx-auto' />
-                            <p>{details.main.temp}°C</p>
+                        <div className='px-3 py-4 mr-2 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                            <BsThermometer size={30} className='mx-auto fill-slate-600' />
+                            <p className='text-center'>{details.main.temp}°C</p>
                         </div>
-                        <div className='px-3'>
-                            <SlSpeedometer size={40} className='mx-auto' />
+                        <div className='px-3 py-4 mr-2 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                            <SlSpeedometer size={30} className='mx-auto fill-slate-600' />
                             <p className='text-center'>{details.main.pressure} hPa</p>
                         </div>
-                    </div>}
+                        <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                            <BsClouds size={30} className='mx-auto fill-slate-600' />
+                            <p className='text-center'>{details.clouds.all}</p>
+                        </div>
+                    </div>
+                        :
+                        <div className='bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400 h-full'>
+
+                        </div>}
                 </div>
                 <div className="py-2"></div>
 
-                {details && <div className='flex'>
+                {details ? <div className='flex'>
                     <div className='text-center content-center w-2/5 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
-                        <p className='p-2 text-lg font-thin pl-3'>{`${details.name}, ${details.sys.country}`}</p>
+                        <p className='p-3 text-lg font-thin pl-3'>{`${details.name}, ${details.sys.country}`}</p>
                     </div>
 
                     <div className='text-center content-center w-2/5 mx-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
-                        <p className='p-1 text-lg font-thin pl-3 pr-1'>{`${details.main.temp_min.toFixed(1)}°C / ${details.main.temp_max.toFixed(1)}°C`}</p>
+                        <p className='p-3 text-lg font-thin pl-3 pr-1'>{`${details.main.temp_min.toFixed(1)}°C / ${details.main.temp_max.toFixed(1)}°C`}</p>
                     </div>
 
                     <div className='text-center content-center w-2/5 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
-                        <p className='p-1 text-lg font-thin pl-3 pr-1'>{`Timezone: ${details.timezone}`}</p>
+                        <p className='p-3 text-lg font-thin pl-3 pr-1'>{`Timezone: ${details.timezone}`}</p>
                     </div>
-                </div>}
+                </div>
+                    :
+                    <div className='bg-white w-full bg-opacity-10 h-12 rounded-lg shadow-lg shadow-black-400'>
+
+                    </div>}
 
                 <div className="py-2"></div>
-                <div className='px-10 bg-white bg-opacity-10 h-64 rounded-lg shadow-lg shadow-black-400'>
+                <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg shadow-black-400'>
                     {city && <Graph />}
                 </div>
             </div>
