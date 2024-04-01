@@ -7,7 +7,6 @@ function Forecast() {
   const [forecast, setForecast] = useState([])
   const {data, setGraph} = useContext(detailsContext)
 
-
   useEffect(() => {
       setForecast(data)
       const firstPod = data[0].sys && data[0].sys.pod;

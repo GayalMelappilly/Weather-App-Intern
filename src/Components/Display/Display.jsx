@@ -11,11 +11,32 @@ import { detailsContext } from '../../Context/Context'
 import Graph from '../Graph/Graph'
 
 function Display() {
-    const [city, setCity] = useState()
+    const [city, setCity] = useState('')
     const [input, setInput] = useState('')
     const [details, setDetails] = useState(null)
     const [forecast, setForecast] = useState([])
+    const [lat, setLat] = useState('')
+    const [lon, setLon] = useState('')
     const {data, setData } = useContext(detailsContext)
+
+    navigator.geolocation.getCurrentPosition((pos)=>{
+        // setLat(pos.coords.latitude)
+        // setLon(pos.coords.longitude)
+
+        setLat(76.3874)
+        setLon(10.191)
+        console.log(lat, lon)
+      })
+
+    // useEffect(()=>{
+    //     axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${API_KEY}`).then((response)=>{
+    //         setCity(response.data.name)
+    //         console.log(response.data.name)
+    //     }).catch((err)=>{
+    //         console.log(err.message)
+    //     })
+    // },[]) 
+
 
     useEffect(() => {
         if (!city) return;
@@ -60,20 +81,20 @@ function Display() {
 
     return (
 
-        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg'>
-            <div className='w-5/12'>
-                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400'>
+        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg        max-sm:py-2 '>
+            <div className='w-5/12               max-sm:w-96 max-sm:mx-2 max-sm:h-2/6'>
+                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400          max-sm:px-1 max-sm:w-screen max-sm:ml=8'>
                     <div className='py-4 relative'>
-                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
+                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none           max-sm:w-52 max-sm:h-6' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
                         <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
                             <FontAwesomeIcon className='text-white' icon={faSearch} />
                         </div>
                         &nbsp;
-                        <button onClick={(e) => { setCity(input) }} className='px-6 bg-black absolute bg-opacity-10 rounded-lg h-8 text-white'>Search</button>
+                        <button onClick={(e) => { setCity(input) }} className='px-6 bg-black absolute bg-opacity-10 rounded-lg h-8 text-white         max-sm:h-6'>Search</button>
                     </div>
                 </div>
                 <div className="py-2"></div>
-                <div className={`bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 h-${forecast ? '2/6' : '4/6'}`}>
+                <div className={`bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 h-2/6`}>
                     {details && <div className='flex justify-start'>
                         <Icon icon={details.weather[0].icon} />
                         <div className='pt-10 pl-3'>
@@ -89,13 +110,13 @@ function Display() {
                 <div className="py-2"></div>
                 
                 <div>
-                { details && <Forecast /> } 
+                { details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-56 rounded-lg shadow-lg shadow-black-400'></div> } 
                 </div>
             </div>
 
             <div className='px-2'></div>
 
-            <div className="w-6/12">
+            <div className="w-6/12 max-sm:invisible">
                 <div>
                     {details ? <div className='h-full text-xl font-thin flex justify-between items-center'>
                         <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
@@ -120,8 +141,7 @@ function Display() {
                         </div>
                     </div>
                         :
-                        <div className='bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400 h-full'>
-
+                        <div className='bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
                         </div>}
                 </div>
                 <div className="py-2"></div>
