@@ -4,9 +4,10 @@ export const detailsContext = createContext(null)
 
 export const Context = ({children}) => {
     const [data, setData] = useState([''])
+    const [graph, setGraph] = useState([])
 
     return (
-        <detailsContext.Provider value={{data, setData}}>
+        <detailsContext.Provider value={{data, setData, graph, setGraph}}>
             {children}
         </detailsContext.Provider>
     )

@@ -4,14 +4,11 @@ import { API_KEY } from '../../Constants/constants'
 import { detailsContext } from '../../Context/Context'
 import Icon from '../Icon/Icon'
 
-function Forecast(props) {
+function Forecast() {
   const [forecast, setForecast] = useState([])
   const [pod, setPod] = useState(null)
-  const [dailyForecast, setDailyForecast] = useState('')
-  const { data } = useContext(detailsContext)
-
-  // setForecast(data)
-  // console.log('DATA : ' + forecast)
+  const [dailyForecast, setDailyForecast] = useState([])
+  const { data, setGraph, graph } = useContext(detailsContext)
 
 
   useEffect(() => {
@@ -19,27 +16,25 @@ function Forecast(props) {
       const firstPod = data[0].sys && data[0].sys.pod;
       console.log("First Pod:", firstPod);
 
-      // Set daily forecast based on forecast data
       if (firstPod === 'd') {
-        setDailyForecast({
-          day1: data[0],
-          day2: data[4],
-          day3: data[12],
-          day4: data[20],
-          day5: data[28],
-          day6: data[36]
-        });
+        setDailyForecast([
+          data[0],
+          data[4],
+          data[12],
+          data[20],
+          data[28],
+          data[36]
+        ]);
       } else if (firstPod === 'n') {
-        setDailyForecast({
-          day1: data[0],
-          day2: data[8],
-          day3: data[16],
-          day4: data[24],
-          day5: data[32],
-          day6: data[40]
-        });
+        setDailyForecast([
+          data[0],
+          data[8],
+          data[16],
+          data[24],
+          data[32],
+          data[40]
+        ]);
       }
-
     }
   }, [data]);
 
@@ -55,61 +50,29 @@ function Forecast(props) {
   }
 
   useEffect(() => {
-    if (dailyForecast) console.log("DF : " + dailyForecast.day1.main.temp)
-  })
+    if (dailyForecast)
+    console.log("DAY : "+dailyForecast)
+      setGraph(dailyForecast)
+    console.log("GRAPH 1/ : " + graph)
+  }, [dailyForecast, graph])
 
 
   return (
     <div>
       {/* <div className='px-4'>Forecast</div> */}
       {dailyForecast && <div className='grid grid-cols-3 gap-2'>
-        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
-          <div className='flex'>
-            <Icon for='forecast' icon={dailyForecast.day1.weather[0].icon} />
-            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day1.main.temp_min.toFixed(0)}° / {dailyForecast.day1.main.temp_max.toFixed(0)}°</p>
-          </div>
-          <p className='text-sm font-thin'>{toDate(dailyForecast.day1.dt_txt.slice(0, 14))}</p>
-        </div>
 
-        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
-          <div className='flex'>
-            <Icon for='forecast' icon={dailyForecast.day2.weather[0].icon} />
-            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day2.main.temp_min.toFixed(0)}° / {dailyForecast.day2.main.temp_max.toFixed(0)}°</p>
+        {dailyForecast.map((obj) => {
+          return (
+          <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
+            <div className='flex'>
+              <Icon for='forecast' icon={obj.weather[0].icon} />
+              <p className='pl-1 pt-4 font-normal font-lg'>{obj.main.temp_min.toFixed(0)}° / {obj.main.temp_max.toFixed(0)}°</p>
+            </div>
+            <p className='text-sm font-thin'>{toDate(obj.dt_txt.slice(0, 14))}</p>
           </div>
-          <p className='text-sm font-thin'>{toDate(dailyForecast.day2.dt_txt.slice(0, 14))}</p>
-        </div>
-
-        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
-          <div className='flex'>
-            <Icon for='forecast' icon={dailyForecast.day3.weather[0].icon} />
-            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day3.main.temp_min.toFixed(0)}° / {dailyForecast.day3.main.temp_max.toFixed(0)}°</p>
-          </div>
-          <p className='text-sm font-thin'>{toDate(dailyForecast.day3.dt_txt.slice(0, 14))}</p>
-        </div>
-
-        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
-          <div className='flex'>
-            <Icon for='forecast' icon={dailyForecast.day4.weather[0].icon} />
-            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day4.main.temp_min.toFixed(0)}° / {dailyForecast.day4.main.temp_max.toFixed(0)}°</p>
-          </div>
-          <p className='text-sm font-thin'>{toDate(dailyForecast.day4.dt_txt.slice(0, 14))}</p>
-        </div>
-
-        <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
-          <div className='flex'>
-            <Icon for='forecast' icon={dailyForecast.day5.weather[0].icon} />
-            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day5.main.temp_min.toFixed(0)}° / {dailyForecast.day5.main.temp_max.toFixed(0)}°</p>
-          </div>
-          <p className='text-sm font-thin'>{toDate(dailyForecast.day5.dt_txt.slice(0, 14))}</p>
-        </div>
-
-        {dailyForecast.day6 && <div className='h-28 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30'>
-          <div className='flex'>
-            <Icon for='forecast' icon={dailyForecast.day6.weather[0].icon} />
-            <p className='pl-1 pt-4 font-normal font-lg'>{dailyForecast.day6.main.temp_min.toFixed(0)}° / {dailyForecast.day6.main.temp_max.toFixed(0)}°</p>
-          </div>
-          <p className='text-sm font-thin'>{toDate(dailyForecast.day6.dt_txt.slice(0, 14))}</p>
-        </div>}
+          )
+        })}
       </div>}
     </div >
   )

@@ -75,7 +75,7 @@ function Display() {
                     </div>
                 </div>
                 <div className="py-2"></div>
-                <div className={`bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 h-${forecast ? '2/6' : '4/6' }`}>
+                <div className={`bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 h-${forecast ? '2/6' : '4/6'}`}>
                     {details && <div className='flex justify-start'>
                         <Icon icon={details.weather[0].icon} />
                         <div className='pt-10 pl-3'>
@@ -91,9 +91,9 @@ function Display() {
                 <div className="py-2"></div>
                 <div className=''>
                     <div>
-                    {forecast && <div className="forecast">
-                        <Forecast data={forecast} />
-                    </div>}
+                        {forecast && <div className="forecast">
+                            <Forecast data={forecast} />
+                        </div>}
                     </div>
                 </div>
             </div>
@@ -122,8 +122,24 @@ function Display() {
                     </div>}
                 </div>
                 <div className="py-2"></div>
-                <div className='px-10 bg-white bg-opacity-10 h-4/6  rounded-lg shadow-lg shadow-black-400'>
-                    {/* <Graph /> */}
+
+                {details && <div className='flex'>
+                    <div className='text-center content-center w-2/5 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
+                        <p className='p-2 text-lg font-thin pl-3'>{`${details.name}, ${details.sys.country}`}</p>
+                    </div>
+
+                    <div className='text-center content-center w-2/5 mx-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
+                        <p className='p-1 text-lg font-thin pl-3 pr-1'>{`${details.main.temp_min.toFixed(1)}°C / ${details.main.temp_max.toFixed(1)}°C`}</p>
+                    </div>
+
+                    <div className='text-center content-center w-2/5 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
+                        <p className='p-1 text-lg font-thin pl-3 pr-1'>{`Timezone: ${details.timezone}`}</p>
+                    </div>
+                </div>}
+
+                <div className="py-2"></div>
+                <div className='px-10 bg-white bg-opacity-10 h-64 rounded-lg shadow-lg shadow-black-400'>
+                    {city && <Graph />}
                 </div>
             </div>
         </div>
