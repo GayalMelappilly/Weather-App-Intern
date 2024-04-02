@@ -81,10 +81,10 @@ function Display() {
 
     return (
 
-        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg        max-sm:py-2'>
-            <div className='w-5/12                max-sm:mx-3 max-sm:h-2/6'>
-                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400         max-sm:w-11/12 max-sm:px-1 max-sm:ml=8'>
-                    <div className='py-4 relative     max-sm: mx-2'>
+        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg       max-sm:grid max-sm:py-3'>
+            <div className='w-5/12              max-sm:w-80 max-sm:mx-3 max-sm:h-4/6'>
+                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400         max-sm:w-full max-sm:px-6'>
+                    <div className='py-4 relative     max-sm:mx-2 max-sm:w-full max-sm:py-6'>
                         <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none           max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
                         <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
                             <FontAwesomeIcon className='text-white' icon={faSearch} />
@@ -93,21 +93,21 @@ function Display() {
                         <button onClick={(e) => { setCity(input) }} className='px-6 bg-black absolute bg-opacity-10 rounded-lg h-8 text-white         max-sm:h-6'>Search</button>
                     </div>
                 </div>
-                <div className="py-2"></div>
-                <div className={`bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 h-2/6`}>
-                    {details && <div className='flex justify-start'>
+                <div className="py-2 max-sm:py-1"></div>
+                <div className={`bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 h-2/6       max-sm:h-16`}>
+                    {details && <div className='flex justify-start      max-sm:my-auto'>
                         <Icon icon={details.weather[0].icon} />
-                        <div className='pt-10 pl-3'>
-                            <p className='font-thin text-3xl'>{details.main.temp}°C</p>
-                            <p className='font-thin text-3xl'>{details.weather[0].main}</p>
+                        <div className='pt-10 pl-3    max-sm:pt-1 max-sm:inline-block max-sm:align-middle'>
+                            <p className='font-thin text-3xl max-sm:text-base'>{details.main.temp}°C</p>
+                            <p className='font-thin text-3xl max-sm:text-base'>{details.weather[0].main}</p>
                         </div>
-                        <div className='pt-12 pl-8 '>
-                            <p className='font-thin text-xl'>{formattedDate}</p>
-                            <p className='font-thin text-xl'>{convertToStandardTime(details.timezone)}</p>
+                        <div className='pt-12 pl-8    max-sm:pt-1 max-sm:inline-block max-sm:align-middle'>
+                            <p className='font-thin text-xl max-sm:text-base'>{formattedDate}</p>
+                            <p className='font-thin text-xl max-sm:text-base'>{convertToStandardTime(details.timezone)}</p>
                         </div>
                     </div>}
                 </div>
-                <div className="py-2"></div>
+                <div className="py-2 max-sm:py-1"></div>
                 
                 <div>
                 { details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-56 rounded-lg shadow-lg shadow-black-400'></div> } 
@@ -116,26 +116,26 @@ function Display() {
 
             <div className='px-2'></div>
 
-            <div className="w-6/12 max-sm:invisible">
+            <div className="w-6/12      max-sm:w-80 max-sm:mx-3 max-sm:h-4/6">
                 <div>
-                    {details ? <div className='h-full text-xl font-thin flex justify-between items-center'>
-                        <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                    {details ? <div className='h-full text-xl font-thin flex justify-between items-center        max-sm:w-full max-sm:px-1 max-sm:text-xs'>
+                        <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400      max-sm:px-2 max-sm:h-20'>
                             <BsWind size={30} className='mx-auto fill-slate-600' />
                             <p className='text-center'>{details.wind.speed}km/h</p>
                         </div>
-                        <div className='px-3 py-4 mx-2 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                        <div className='px-3 py-4 mx-2 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400      max-sm:px-2 max-sm:h-20'>
                             <BsDroplet size={30} className='mx-auto fill-slate-600' />
                             <p className='text-center'>{details.main.humidity}%</p>
                         </div>
-                        <div className='px-3 py-4 mr-2 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                        <div className='px-3 py-4 mr-2 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400      max-sm:px-2 max-sm:h-20'>
                             <BsThermometer size={30} className='mx-auto fill-slate-600' />
                             <p className='text-center'>{details.main.temp}°C</p>
                         </div>
-                        <div className='px-3 py-4 mr-2 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                        <div className='px-3 py-4 mr-2 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400      max-sm:px-2 max-sm:h-20'>
                             <SlSpeedometer size={30} className='mx-auto fill-slate-600' />
                             <p className='text-center'>{details.main.pressure} hPa</p>
                         </div>
-                        <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
+                        <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400      max-sm:px-2 max-sm:h-20'>
                             <BsClouds size={30} className='mx-auto fill-slate-600' />
                             <p className='text-center'>{details.clouds.all}</p>
                         </div>
@@ -144,19 +144,19 @@ function Display() {
                         <div className='bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400'>
                         </div>}
                 </div>
-                <div className="py-2"></div>
+                <div className="py-2 max-sm:py-1"></div>
 
                 {details ? <div className='flex'>
                     <div className='text-center content-center w-2/5 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
-                        <p className='p-3 text-lg font-thin pl-3'>{`${details.name}, ${details.sys.country}`}</p>
+                        <p className='p-3 text-lg font-thin pl-3       max-sm:text-xs'>{`${details.name}, ${details.sys.country}`}</p>
                     </div>
 
                     <div className='text-center content-center w-2/5 mx-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
-                        <p className='p-3 text-lg font-thin pl-3 pr-1'>{`${details.main.temp_min.toFixed(1)}°C / ${details.main.temp_max.toFixed(1)}°C`}</p>
+                        <p className='p-3 text-lg font-thin pl-3 pr-1       max-sm:text-xs'>{`${details.main.temp_min.toFixed(1)}°C / ${details.main.temp_max.toFixed(1)}°C`}</p>
                     </div>
 
                     <div className='text-center content-center w-2/5 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
-                        <p className='p-3 text-lg font-thin pl-3 pr-1'>{`Timezone: ${details.timezone}`}</p>
+                        <p className='p-3 text-lg font-thin pl-3 pr-1       max-sm:text-xs'>{`Timezone: ${details.timezone}`}</p>
                     </div>
                 </div>
                     :
@@ -164,8 +164,8 @@ function Display() {
 
                     </div>}
 
-                <div className="py-2"></div>
-                <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg shadow-black-400'>
+                <div className="py-2 max-sm:py-1"></div>
+                <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg shadow-black-400 max-sm:px-1'>
                     {city && <Graph />}
                 </div>
             </div>
