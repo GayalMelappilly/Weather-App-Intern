@@ -20,19 +20,20 @@ function Display() {
     const {data, setData } = useContext(detailsContext)
 
     navigator.geolocation.getCurrentPosition((pos)=>{
-        setLat(pos.coords.latitude)
-        setLon(pos.coords.longitude)
-        console.log(lat, lon)
-      })
+            setLat(pos.coords.latitude)
+            setLon(pos.coords.longitude)
+            console.log(lat, lon)
+          })
 
     useEffect(()=>{
+        
         axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${API_KEY}`).then((response)=>{
-            setCity(response.data.name)
-            console.log(response.data.name)
+            setCity(response.data[0].name)
+            console.log(response.data[0].name)
         }).catch((err)=>{
             console.log(err.message,city)
         })
-    }) 
+    },[]) 
 
 
     useEffect(() => {
