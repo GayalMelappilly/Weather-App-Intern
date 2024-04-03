@@ -15,24 +15,19 @@ function Display() {
     const [input, setInput] = useState('')
     const [details, setDetails] = useState(null)
     const [forecast, setForecast] = useState([])
-    const [lat, setLat] = useState('')
-    const [lon, setLon] = useState('')
     const {data, setData } = useContext(detailsContext)
 
-    navigator.geolocation.getCurrentPosition((pos)=>{
-            setLat(pos.coords.latitude)
-            setLon(pos.coords.longitude)
-            console.log(lat, lon)
-          })
-
-    useEffect(()=>{
-        
-        axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${API_KEY}`).then((response)=>{
-            setCity(response.data[0].name)
-            console.log(response.data[0].name)
-        }).catch((err)=>{
-            console.log(err.message,city)
-        })
+    
+    useEffect(()=>{    
+        navigator.geolocation.getCurrentPosition((pos)=>{
+                console.log(pos.coords.latitude,pos.coords.longitude)
+                axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&limit=5&appid=${API_KEY}`).then((response)=>{
+                    setCity(response.data[0].name)
+                    console.log(response.data[0].name)
+                }).catch((err)=>{
+                    console.log(err.message,"CITY : "+city)
+                })
+              })
     },[]) 
 
 
