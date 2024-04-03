@@ -158,7 +158,7 @@ function Display() {
                     </div>}
 
                 <div className="py-2 max-sm:py-1"></div>
-                <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg shadow-black-400 max-sm:px-1'>
+                <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg shadow-black-400 max-sm:px-1 max-sm:my-3'>
                     {city ? <Graph /> : <div className='max-sm:h-72 max-sm:w-full max-sm:inline-block max-sm:align-middle'></div>}
                 </div>
             </div>

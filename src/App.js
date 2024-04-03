@@ -11,7 +11,7 @@ function App() {
       <div>
       {/* <div className='bg-design relative'></div> */}
         <Header></Header>
-        <div className='h-screen'>
+        <div className='h-auto'>
           <Display></Display>
           <Footer></Footer>
         </div>
