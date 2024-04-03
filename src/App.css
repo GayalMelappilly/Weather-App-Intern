@@ -21,6 +21,30 @@
   left: 20rem;
 } */
 
+@font-face {
+  font-family: 'Geo-sans';
+  src: url('./assets/Fonts/GeosansLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Penna';
+  src: url('./assets/Fonts/penna.otf') format('opentype');
+}
+
+.geo-sans{
+  font-family: 'Geo-sans';
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.penna{
+  font-family: 'Penna';
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
 *{
   -ms-overflow-style: none;
 }
