@@ -20,22 +20,19 @@ function Display() {
     const {data, setData } = useContext(detailsContext)
 
     navigator.geolocation.getCurrentPosition((pos)=>{
-        // setLat(pos.coords.latitude)
-        // setLon(pos.coords.longitude)
-
-        setLat(76.3874)
-        setLon(10.191)
+        setLat(pos.coords.latitude)
+        setLon(pos.coords.longitude)
         console.log(lat, lon)
       })
 
-    // useEffect(()=>{
-    //     axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${API_KEY}`).then((response)=>{
-    //         setCity(response.data.name)
-    //         console.log(response.data.name)
-    //     }).catch((err)=>{
-    //         console.log(err.message)
-    //     })
-    // },[]) 
+    useEffect(()=>{
+        axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${API_KEY}`).then((response)=>{
+            setCity(response.data.name)
+            console.log(response.data.name)
+        }).catch((err)=>{
+            console.log(err.message,city)
+        })
+    }) 
 
 
     useEffect(() => {
@@ -81,9 +78,9 @@ function Display() {
 
     return (
 
-        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg       max-sm:grid max-sm:py-3'>
-            <div className='w-5/12              max-sm:w-72 max-sm:mx-auto max-sm:h-4/6'>
-                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400         max-sm:w-full max-sm:px-6'>
+        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg       max-sm:grid max-sm:py-3     '>
+            <div className='w-5/12              max-sm:container max-sm:mx-auto max-sm:h-4/6'>
+                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400        max-sm:full max-sm:w-full max-sm:px-6'>
                     <div className='py-4 relative     max-sm:w-full max-sm:py-2'>
                         <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none           max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
                         <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
@@ -110,7 +107,7 @@ function Display() {
                 <div className="py-2 max-sm:py-1"></div>
                 
                 <div>
-                { details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-44 rounded-lg shadow-lg shadow-black-400         max-sm:h-20 max-sm:p-2 max-sm-pb-2'></div> } 
+                { details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-44 rounded-lg shadow-lg shadow-black-400         max-sm:h-40 max-sm:p-2 max-sm-pb-2'></div> } 
                 </div>
             </div>
 
@@ -141,7 +138,7 @@ function Display() {
                         </div>
                     </div>
                         :
-                        <div className='bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400         max-sm:w-full'>
+                        <div className='bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400         max-sm:w-full max-sm:h-24'>
                         </div>}
                 </div>
                 <div className="py-2 max-sm:py-1"></div>
@@ -166,7 +163,7 @@ function Display() {
 
                 <div className="py-2 max-sm:py-1"></div>
                 <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg shadow-black-400 max-sm:px-1'>
-                    {city && <Graph />}
+                    {city ? <Graph /> : <div className='max-sm:h-72 max-sm:w-full max-sm:inline-block max-sm:align-middle'></div>}
                 </div>
             </div>
         </div>
