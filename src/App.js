@@ -14,6 +14,7 @@ function App() {
         <div className='h-auto'>
           <Display></Display>
           <Footer></Footer>
+          <div className='h-8'></div>
         </div>
       </div>
     </div>
