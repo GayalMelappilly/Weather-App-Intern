@@ -74,7 +74,7 @@ function Display() {
 
     return (
 
-        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg       max-sm:grid max-sm:py-3     '>
+        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl shadow-black-400 w-5/6 rounded-lg      max-sm:h-auto max-sm:grid max-sm:py-3     '>
             <div className='w-5/12              max-sm:container max-sm:mx-auto max-sm:h-4/6'>
                 <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400        max-sm:full max-sm:w-full max-sm:px-6'>
                     <div className='py-4 relative     max-sm:w-full max-sm:py-2'>
@@ -103,7 +103,7 @@ function Display() {
                 <div className="py-2 max-sm:py-1"></div>
                 
                 <div>
-                { details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-44 rounded-lg shadow-lg shadow-black-400         max-sm:h-40 max-sm:p-2 max-sm-pb-2'></div> } 
+                { details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-44 rounded-lg shadow-lg shadow-black-400         max-sm:p-2 max-sm-pb-2'></div> } 
                 </div>
             </div>
 
