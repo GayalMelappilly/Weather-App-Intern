@@ -26,7 +26,7 @@ function Graph(props) {
     }
 
     return (
-        <div className='flex justify-center align-middle h-96 pt-4    max-sm:h-96 max-sm:w-full max-sm:inline-block max-sm:align-middle'>
+        <div className='flex justify-center align-middle h-96 pt-4    max-sm:h-72 max-sm:w-full max-sm:inline-block max-sm:align-middle'>
             <Bar
                 className='h-full'
                 data={{

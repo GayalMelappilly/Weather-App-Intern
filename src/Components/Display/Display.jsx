@@ -98,12 +98,12 @@ function Display() {
                     {details && <div className='flex justify-start     '>
                         <Icon icon={details.weather[0].icon} />
                         <div className='pt-10 pl-3    max-sm:pt-1 max-sm:inline-block max-sm:align-middle'>
-                            <p className='font-thin text-3xl max-sm:text-base'>{details.main.temp}°C</p>
-                            <p className='font-thin text-3xl max-sm:text-base'>{details.weather[0].main}</p>
+                            <p className='font-thin text-3xl max-sm:text-base max-sm:font-light'>{details.main.temp}°C</p>
+                            <p className='font-thin text-3xl max-sm:text-base max-sm:font-light'>{details.weather[0].main}</p>
                         </div>
                         <div className='pt-12 pl-8    max-sm:pt-1 max-sm:inline-block max-sm:align-middle'>
-                            <p className='font-thin text-xl max-sm:text-base'>{formattedDate}</p>
-                            <p className='font-thin text-xl max-sm:text-base'>{convertToStandardTime(details.timezone)}</p>
+                            <p className='font-thin text-xl max-sm:text-base max-sm:font-light'>{formattedDate}</p>
+                            <p className='font-thin text-xl max-sm:text-base max-sm:font-light'>{convertToStandardTime(details.timezone)}</p>
                         </div>
                     </div>}
                 </div>
@@ -118,7 +118,7 @@ function Display() {
 
             <div className="w-6/12      max-sm:w-72 max-sm:mx-auto max-sm:h-4/6">
                 <div>
-                    {details ? <div className='h-full text-xl font-thin flex justify-between items-center        max-sm:w-full max-sm:px-1 max-sm:text-xs'>
+                    {details ? <div className='h-full text-xl font-thin flex justify-between items-center        max-sm:w-full max-sm:px-1 max-sm:text-xs max-sm:font-light'>
                         <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg shadow-black-400      max-sm:px-1.5 max-sm:h-20'>
                             <BsWind size={30} className='mx-auto fill-slate-600' />
                             <p className='text-center'>{details.wind.speed}km/h</p>
@@ -148,15 +148,15 @@ function Display() {
 
                 {details ? <div className='flex'>
                     <div className='text-center content-center w-2/5 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
-                        <p className='p-3 text-lg font-thin pl-3       max-sm:text-xs'>{`${details.name}, ${details.sys.country}`}</p>
+                        <p className='p-3 text-lg font-thin pl-3       max-sm:text-xs max-sm:font-light'>{`${details.name}, ${details.sys.country}`}</p>
                     </div>
 
                     <div className='text-center content-center w-2/5 mx-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
-                        <p className='p-3 text-lg font-thin pl-3 pr-1       max-sm:text-xs'>{`${details.main.temp_min.toFixed(1)}°C / ${details.main.temp_max.toFixed(1)}°C`}</p>
+                        <p className='p-3 text-lg font-thin pl-3 pr-1       max-sm:text-xs max-sm:font-light'>{`${details.main.temp_min.toFixed(1)}°C / ${details.main.temp_max.toFixed(1)}°C`}</p>
                     </div>
 
                     <div className='text-center content-center w-2/5 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400'>
-                        <p className='p-3 text-lg font-thin pl-3 pr-1       max-sm:text-xs'>{`Timezone: ${details.timezone}`}</p>
+                        <p className='p-3 text-lg font-thin pl-3 pr-1       max-sm:text-xs max-sm:font-light'>{`Timezone: ${details.timezone}`}</p>
                     </div>
                 </div>
                     :
