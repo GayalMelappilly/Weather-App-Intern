@@ -26,7 +26,7 @@ function Graph(props) {
     }
 
     return (
-        <div className='flex justify-center align-middle h-96 pt-4    max-sm:h-auto max-sm:w-full max-sm:inline-block max-sm:align-middle max-sm:py-3'>
+        <div className='flex justify-center align-middle h-96 pt-4       max-md:py-10 max-md:h-80         max-sm:h-auto max-sm:w-full max-sm:inline-block max-sm:align-middle max-sm:py-3'>
             <Line
                 className='h-full'
                 data={{
@@ -38,11 +38,11 @@ function Graph(props) {
                     }),
                     datasets: [
                         {
-                            label: 'Minimum',
+                            label: 'Min',
                             data: graph.map((obj) => obj?.main?.temp_min || 0),
                         },
                         {
-                            label: 'Maximum',
+                            label: 'Max',
                             data: graph.map((obj) => obj?.main?.temp_max || 0)
                         },
                         {
