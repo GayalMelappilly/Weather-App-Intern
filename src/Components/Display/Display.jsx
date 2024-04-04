@@ -78,12 +78,12 @@ function Display() {
             <div className='w-5/12      max-md:w-full        max-sm:container max-sm:mx-auto max-sm:h-4/6'>
                 <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg shadow-black-400       max-lg:pb-4 max-lg:mx-auto max-lg:my-auto        max-md:pb-0 max-md:mx-auto max-md:h-16 max-md:px-0        max-sm:h-12 max-sm:w-full max-sm:px-6'>
                     <div className='py-4 relative          max-lg:flex-wrap max-lg:flex max-lg:mx-auto max-lg max-lg:mb-6 max-lg:w-full max-lg:my-auto             max-md:mb-0 max-md:block max-md:mx-20            max-sm:w-full max-sm:py-2 max-sm:mx-auto'>
-                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none         max-lg:w-48           max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
-                        <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none             max-md:pb-0'>
+                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none         max-lg:w-full     max-md:w-60     max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
+                        <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none        max-lg:pb-6        max-md:pb-0'>
                             <FontAwesomeIcon className='text-white' icon={faSearch} />
                         </div>
                         &nbsp;
-                        <button onClick={(e) => { setCity(input) }} className='px-6 bg-black absolute bg-opacity-10 rounded-lg h-8 text-white            max-lg:mt-10 max-lg:w-48       max-md:ml-0 max-md:w-auto max-md:mt-0       max-sm:px-5  max-sm:h-6'>Search</button>
+                        <button onClick={(e) => { setCity(input) }} className='px-6 bg-black absolute bg-opacity-10 rounded-lg h-8 text-white            max-lg:mt-10 max-lg:w-full       max-md:ml-0 max-md:w-auto max-md:mt-0       max-sm:px-5  max-sm:h-6'>Search</button>
                     </div>
                 </div>
                 <div className="py-2 max-sm:py-1"></div>
