@@ -26,7 +26,7 @@ function Graph(props) {
     }
 
     return (
-        <div className='flex justify-center align-middle h-96 pt-4       max-md:py-10 max-md:h-80         max-sm:h-auto max-sm:w-full max-sm:inline-block max-sm:align-middle max-sm:py-3'>
+        <div className='flex justify-center align-middle h-full p-3 pt-4      max-lg:py-10 max-lg:h-80     max-md:py-10 max-md:h-80         max-sm:h-auto max-sm:w-full max-sm:inline-block max-sm:align-middle max-sm:py-3'>
             <Line
                 className='h-full'
                 data={{
@@ -51,6 +51,9 @@ function Graph(props) {
                         }
                     ],
                 }}
+                height={"100%"}
+                width={"100%"}
+                options={{maintainAspectRatio: false}}
             />
 
 
