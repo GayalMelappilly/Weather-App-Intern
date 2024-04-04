@@ -53,6 +53,7 @@ function Graph(props) {
                 }}
                 height={"100%"}
                 width={"100%"}
+                color={'#ffffff'}
                 options={{maintainAspectRatio: false}}
             />
 

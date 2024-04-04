@@ -7,7 +7,7 @@ import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
-    <div className='app w-full bg-gradient-to-br from-cyan-300 to-gray-50'>
+    <div className='app w-full bg-gradient-to-br from-cyan-300 to-gray-50 dark:bg-gradient-to-t dark:from-gray-700 dark:to-slate-900'>
       <div>
       {/* <div className='bg-design relative'></div> */}
       <div className='h-4'></div>

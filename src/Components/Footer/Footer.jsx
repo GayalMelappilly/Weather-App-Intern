@@ -4,14 +4,14 @@ import './Footer.css'
 function Footer() {
   return (
     <div className='flex justify-center'>
-      <footer className=" mt-10 w-5/6  shadow-2xl items-center bg-opacity-20 rounded-lg text-center text-surface bg-black">
+      <footer className=" mt-10 w-5/6  shadow-2xl items-center bg-opacity-20 rounded-lg text-center text-surface bg-black dark:shadow-slate-800">
         <div class="container px-6 pt-6">
           <div class="mb-6 flex justify-center space-x-2">
             
             <a
               href="mailto:gayalsunl@gmail.com"
               type="button"
-              class="rounded-full bg-white p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:bg-neutral-700 dark:text-white"
+              class="rounded-full bg-white p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out  dark:shadow-slate-800 hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:bg-neutral-700 dark:text-white"
               data-twe-ripple-init
               data-twe-ripple-color="light">
               <span class="mx-auto [&>svg]:h-5 [&>svg]:w-5">
@@ -28,7 +28,7 @@ function Footer() {
             <a
               href="https://github.com/GayalMelappilly"
               type="button"
-              class="rounded-full bg-white p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:bg-neutral-700 dark:text-white"
+              class="rounded-full bg-white p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out dark:shadow-slate-800 hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:bg-neutral-700 dark:text-white"
               data-twe-ripple-init
               data-twe-ripple-color="light">
               <span class="mx-auto [&>svg]:h-5 [&>svg]:w-5">
@@ -45,7 +45,7 @@ function Footer() {
             <a
               href="https://www.instagram.com/__.g_m_s.__/"
               type="button"
-              class="rounded-full bg-white p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:bg-neutral-700 dark:text-white"
+              class="rounded-full bg-white p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30  dark:shadow-slate-800 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:bg-neutral-700 dark:text-white"
               data-twe-ripple-init
               data-twe-ripple-color="light">
               <span class="mx-auto [&>svg]:h-5 [&>svg]:w-5">
