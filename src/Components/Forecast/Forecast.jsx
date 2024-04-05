@@ -57,7 +57,7 @@ function Forecast() {
             return null
           else
             return (
-                <div className='h-30 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30 dark:shadow-slate-800 dark:bg-opacity-10 dark:bg-slate-500     max-lg:h-36  max-md:h-28  max-sm:h-20 max-sm:px-3 max-sm:py-1'>
+                <div className='h-30 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30 dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500     max-lg:h-36  max-md:h-28  max-sm:h-20 max-sm:px-3 max-sm:py-1'>
                   <div className='flex     max-sm:grid'>
                     <Icon for='forecast' icon={obj?.weather[0].icon} />
                     <p key={index} className='pl-1 pt-4 font-normal dark:text-white    max-lg:text-sm    max-sm:pt-0 max-sm:text-xs max-sm:flex max-sm:font-light'>{obj?.main.temp_min.toFixed(0)}° / {obj?.main.temp_max.toFixed(0)}°</p>

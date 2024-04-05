@@ -61,7 +61,7 @@ function Footer() {
 
           </div>          
         </div>
-        <div class="w-full bg-black rounded-lg bg-opacity-30 text-white p-4 text-center geo-sans text-xl">
+        <div class="w-full bg-black rounded-lg bg-opacity-30 text-white p-4 text-center geo-sans text-xl max-sm:text-base">
           Designed & Developed by: 
           <a class="font-semibold" href="https://tw-elements.com/"
           > Gayal M Sunil</a>
