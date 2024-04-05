@@ -52,3 +52,11 @@
   display: none;
 }
 
+/* styles.css */
+.glow-dark {
+  filter: drop-shadow(0 0 8px rgba(138, 43, 226, 1)); /* Adjust glow color and opacity */
+}
+
+.glow-light {
+  filter: drop-shadow(0 0 8px rgba(255, 221, 0, 1)); /* Adjust glow color and opacity */
+}
