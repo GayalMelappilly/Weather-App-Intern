@@ -28,7 +28,7 @@ function Graph(props) {
     return (
         <div className='flex justify-center align-middle h-full p-3 pt-4      max-lg:py-10 max-lg:h-80     max-md:py-10 max-md:h-80         max-sm:h-auto max-sm:w-full max-sm:inline-block max-sm:align-middle max-sm:py-3'>
             <Line
-                className='h-full'
+                className='w-full max-sm:w-full max-sm:h-64'
                 data={{
                     labels: graph.map((obj) => {
                         if(toDate(obj?.dt_txt?.slice(0, 14)) === "Invalid Date")
@@ -51,10 +51,8 @@ function Graph(props) {
                         }
                     ],
                 }}
-                height={"100%"}
-                width={"100%"}
                 options={{
-                    maintainAspectRatio: false
+                    maintainAspectRatio: false,
                 }}
             />
 
