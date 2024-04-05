@@ -4,7 +4,7 @@ import './Footer.css'
 function Footer() {
   return (
     <div className='flex justify-center'>
-      <footer className=" mt-10 w-5/6  shadow-2xl items-center bg-opacity-20 rounded-lg text-center text-surface bg-black dark:shadow-slate-800">
+      <footer className=" mt-10 w-5/6 shadow-2xl items-center bg-opacity-20 rounded-lg text-center text-surface bg-black dark:shadow-slate-800">
         <div class="container px-6 pt-6">
           <div class="mb-6 flex justify-center space-x-2">
             

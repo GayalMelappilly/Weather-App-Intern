@@ -15,7 +15,7 @@ function Display() {
     const [input, setInput] = useState('')
     const [details, setDetails] = useState(null)
     const [forecast, setForecast] = useState([])
-    const [err, setErr] = useState('')
+    const [fade, setFade] = useState('')
     const { data, setData } = useContext(detailsContext)
 
     useEffect(() => {
@@ -26,6 +26,7 @@ function Display() {
                 console.log(response.data[0].name)
             }).catch((err) => {
                 console.log(err.message, "CITY : " + city)
+                setFade("This device doesn't support Geo Location")
             })
         })
     }, [])
@@ -39,11 +40,11 @@ function Display() {
             fetchForecast(response.data.coord.lat, response.data.coord.lon);
         }).catch((err) => {
             console.log("ERR : " + err.message)
-            setErr(err)
-            document.getElementById('popup').classList.remove('hidden')
+            setFade('Invalid location')
             setTimeout(()=>{
-                document.getElementById('popup').classList.add('hidden')
-            },1500)
+                document.getElementById('popup').classList.add('opacity-100')
+                setFade('')
+            },2000)
         })
     }, [city])
 
@@ -51,8 +52,7 @@ function Display() {
         axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`).then((response) => {
             setForecast(response.data);
             setData(response.data.list);
-        })
-            .catch((err) => {
+        }).catch((err) => {
                 console.log("ERR : " + err.message);
             });
     };
@@ -81,12 +81,12 @@ function Display() {
 
         <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl w-5/6 rounded-lg dark:shadow-slate-900         max-md:grid max-md:h-auto       max-sm:h-auto max-sm:grid max-sm:py-3'>
             
-                <div id='popup' className="hidden fixed top-0 flex justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full pt-2">
-                    <div class="relative w-full max-w-fit max-h-auto">
-                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                <h3 class="text-base font-medium text-gray-900 dark:text-white">
-                                    Couldn't get the weather condition in the specified location
+                <div id='popup' className={`transition-all duration-200  ${fade ? 'visible' : 'hidden'}  fixed top-0 flex justify-center pt-2     max-md:w-5/6 max-md:mx-auto      max-sm:mx-auto`}>
+                    <div class="relative ">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+                            <div class="flex items-center mx-auto p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-base text-center font-medium text-gray-900 dark:text-white  max-lg:text-base max-md:text-base">
+                                    {fade}
                                 </h3>
                             </div>
                         </div>
@@ -121,13 +121,13 @@ function Display() {
                 <div className="py-2 max-sm:py-1"></div>
 
                 <div>
-                    {details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-44 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500        max-sm:h-20 max-sm:p-2 max-sm-pb-2'></div>}
+                    {details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-72 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500        max-sm:h-20 max-sm:p-2 max-sm-pb-2'></div>}
                 </div>
             </div>
 
             <div className='px-2'></div>
 
-            <div className="w-6/12      max-md:w-full max-md:mt-4    max-sm:mt-2 max-sm:mt-0 max-sm:grid-cols-none max-sm:w-72 max-sm:mx-auto max-sm:h-4/6">
+            <div className="w-6/12     max-md:w-full max-md:mt-4     max-sm:mt-2 max-sm:mt-0 max-sm:grid-cols-none max-sm:w-72 max-sm:mx-auto max-sm:h-4/6">
                 <div>
                     {details ? <div className='h-full text-xl font-thin flex justify-between items-center dark:text-white     max-lg:text-base       max-md:text-lg               max-sm:px-1 max-sm:text-xs max-sm:font-light'>
                         <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500      max-sm:px-1.5 max-sm:h-20'>
