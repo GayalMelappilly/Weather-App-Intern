@@ -31,32 +31,33 @@
   src: url('./assets/Fonts/penna.otf') format('opentype');
 }
 
-.geo-sans{
+.geo-sans {
   font-family: 'Geo-sans';
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 
-.penna{
+.penna {
   font-family: 'Penna';
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 
-*{
+* {
   -ms-overflow-style: none;
 }
+
 ::-webkit-scrollbar {
   display: none;
 }
 
 /* styles.css */
 .glow-dark {
-  filter: drop-shadow(0 0 8px rgba(138, 43, 226, 1)); /* Adjust glow color and opacity */
+  filter: drop-shadow(0 0 8px rgba(138, 43, 226, 1));
 }
 
 .glow-light {
-  filter: drop-shadow(0 0 8px rgba(255, 221, 0, 1)); /* Adjust glow color and opacity */
+  filter: drop-shadow(0 0 8px rgba(255, 221, 0, 1));
 }
