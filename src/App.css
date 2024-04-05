@@ -55,9 +55,9 @@
 
 /* styles.css */
 .glow-dark {
-  filter: drop-shadow(0 0 8px rgba(138, 43, 226, 1));
+  filter: drop-shadow(0 0 10px rgba(138, 43, 226, .8));
 }
 
 .glow-light {
-  filter: drop-shadow(0 0 8px rgba(255, 221, 0, 1));
+  filter: drop-shadow(0 0 10px rgba(255, 221, 0, .8));
 }
