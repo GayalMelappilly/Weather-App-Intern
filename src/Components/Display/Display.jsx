@@ -9,6 +9,7 @@ import Icon from '../Icon/Icon'
 import Forecast from '../Forecast/Forecast'
 import { detailsContext } from '../../Context/Context'
 import Graph from '../Graph/Graph'
+import $ from 'jquery'
 
 function Display() {
     const [city, setCity] = useState('')
@@ -40,10 +41,10 @@ function Display() {
         }).catch((err) => {
             console.log("ERR : " + err.message)
             setErr(err)
-            document.getElementById('popup').classList.remove('hidden')
-            setTimeout(()=>{
-                document.getElementById('popup').classList.add('hidden')
-            },1500)
+            $('#popup').fadeIn('fast')
+            setTimeout(() => {
+                $('#popup').fadeOut('slow')
+            }, 3000)
         })
     }, [city])
 
@@ -80,19 +81,21 @@ function Display() {
     return (
 
         <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl w-5/6 rounded-lg dark:shadow-slate-900         max-md:grid max-md:h-auto       max-sm:h-auto max-sm:grid max-sm:py-3'>
-            
-                <div id='popup' className="hidden fixed top-0 flex justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full pt-2">
+
+            <center> 
+                <div id='popup' className="hidden fixed top-4 flex justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full pt-2  max-sm:w-3/6">
                     <div class="relative w-full max-w-fit max-h-auto">
                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                <h3 class="text-base font-medium text-gray-900 dark:text-white">
-                                    Couldn't get the weather condition in the specified location
+                                <h3 class="text-base font-medium text-gray-900 dark:text-white  max-sm:text-xs">
+                                    Couldn't get the weather condition from the specified location
                                 </h3>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+            </center>
+
             <div className='w-5/12      max-md:w-full        max-sm:container max-sm:mx-auto max-sm:h-4/6'>
                 <div className='flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg dark:bg-opacity-10 dark:bg-slate-500     max-lg:px-10 max-lg:pb-6 max-lg:mx-auto max-lg:my-auto        max-md:pb-0 max-md:mx-auto max-md:h-16 max-md:px-0        max-sm:h-12 max-sm:w-full max-sm:px-6'>
                     <div className='py-4 relative mx-auto     max-lg:flex-wrap max-lg:flex max-lg:mx-auto max-lg:mb-4 max-lg:w-full max-lg:my-auto             max-md:mb-0 max-md:block max-md:mx-20            max-sm:w-full max-sm:py-2 max-sm:mx-auto'>

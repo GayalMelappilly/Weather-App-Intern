@@ -154,13 +154,6 @@ function Forecast() {
   }
 
   useEffect(() => {
-    if (dailyForecast)
-      console.log(dailyForecast)
-    if (hourly) {
-      hourly.map((obj) => {
-        console.log("H :" + obj[0])
-      })
-    }
     setGraph(dailyForecast)
   }, [dailyForecast])
 
