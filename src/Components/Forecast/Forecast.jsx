@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { detailsContext } from '../../Context/Context'
 import Icon from '../Icon/Icon'
+import $ from 'jquery'
 
 function Forecast() {
   const [dailyForecast, setDailyForecast] = useState([])
   const [forecast, setForecast] = useState([])
   const [hourly, setHourly] = useState([])
+  const [active, setActive] = useState('')
   const { data, setGraph, setHourlyForecast } = useContext(detailsContext)
 
   useEffect(() => {
@@ -173,8 +175,14 @@ function Forecast() {
           else
 
             return (
-              <div className='h-30 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-20 active:bg-opacity-30 dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500     max-lg:h-36  max-md:h-28  max-sm:h-20 max-sm:px-3 max-sm:py-1'
-                onClick={() => { setHourlyForecast(hourly[index])}}>
+              <div
+                id={`id-${index}`}
+                className={`forecast-card h-30 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-40 [&.active]:bg-opacity-40 dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500 dark:hover:bg-opacity-40 dark:active:bg-opacity-30 max-lg:h-36 max-md:h-28 max-sm:h-20 max-sm:px-3 max-sm:py-1 ${active === index ? 'active' : ''}`}
+                onClick={() => {
+                  setActive(index);
+                  setHourlyForecast(hourly[index]);
+                }}
+              >
                 <div className='flex     max-sm:grid'>
                   <Icon for='forecast' icon={obj?.weather[0].icon} />
                   <p key={index} className='pl-1 pt-4 font-normal dark:text-white    max-lg:text-xs    max-sm:pt-0 max-sm:text-xs max-sm:flex max-sm:font-light'>{obj?.main.temp_min.toFixed(0)}° / {obj?.main.temp_max.toFixed(0)}°</p>

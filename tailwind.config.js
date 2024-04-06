@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,7 +10,9 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('tailwindcss-animated')
+    plugin(function({ addVariant }) {
+      addVariant('current', '&.active');
+  })
   ],
 }
 
