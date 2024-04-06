@@ -124,7 +124,7 @@ function Display() {
                 <div className="py-2 max-sm:py-1"></div>
 
                 <div>
-                    {details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-44 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500        max-sm:h-20 max-sm:p-2 max-sm-pb-2'></div>}
+                    {details ? <Forecast /> : <div className='bg-white w-full bg-opacity-10 h-auto rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500        max-sm:h-20 max-sm:p-2 max-sm-pb-2'></div>}
                 </div>
             </div>
 
