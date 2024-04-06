@@ -7,8 +7,13 @@ function Graph(props) {
     defaults.maintainAspectRatio = false
     defaults.responsive = true
 
-    const { graph } = useContext(detailsContext)
-
+    const { graph, hourlyForecast } = useContext(detailsContext)
+    
+    if(hourlyForecast){
+        hourlyForecast.map((obj)=>{
+            console.log(obj.dt_txt)
+        })
+    }
 
     const toDate = (date) => {
         const cDate = new Date(date);
