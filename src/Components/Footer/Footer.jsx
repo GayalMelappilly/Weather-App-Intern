@@ -11,7 +11,7 @@ function Footer() {
             <a
               href="mailto:gayalsunl@gmail.com"
               type="button"
-              class="rounded-full bg- p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out  dark:shadow-slate-800 hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 bg-neutral-700 text-white"
+              class="rounded-full p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out  dark:shadow-slate-800 hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 bg-neutral-700 text-white"
               data-twe-ripple-init
               data-twe-ripple-color="light">
               <span class="mx-auto [&>svg]:h-5 [&>svg]:w-5">
@@ -28,7 +28,7 @@ function Footer() {
             <a
               href="https://github.com/GayalMelappilly"
               type="button"
-              class="rounded-full bg-white p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out dark:shadow-slate-800 hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 bg-neutral-700 text-white"
+              class="rounded-full p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out dark:shadow-slate-800 hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 bg-neutral-700 text-white"
               data-twe-ripple-init
               data-twe-ripple-color="light">
               <span class="mx-auto [&>svg]:h-5 [&>svg]:w-5">
@@ -45,7 +45,7 @@ function Footer() {
             <a
               href="https://www.instagram.com/__.g_m_s.__/"
               type="button"
-              class="rounded-full bg-white p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30  dark:shadow-slate-800 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 bg-neutral-700 text-white"
+              class="rounded-full p-3 uppercase leading-normal text-surface shadow-dark-3 shadow-black/30  dark:shadow-slate-800 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 bg-neutral-700 text-white"
               data-twe-ripple-init
               data-twe-ripple-color="light">
               <span class="mx-auto [&>svg]:h-5 [&>svg]:w-5">

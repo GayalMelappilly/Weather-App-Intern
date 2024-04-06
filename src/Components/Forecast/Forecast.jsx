@@ -170,7 +170,7 @@ function Forecast() {
                 onClick={() => { setHourlyForecast(hourly[index]) }}>
                 <div className='flex     max-sm:grid'>
                   <Icon for='forecast' icon={obj?.weather[0].icon} />
-                  <p key={index} className='pl-1 pt-4 font-normal dark:text-white    max-lg:text-sm    max-sm:pt-0 max-sm:text-xs max-sm:flex max-sm:font-light'>{obj?.main.temp_min.toFixed(0)}° / {obj?.main.temp_max.toFixed(0)}°</p>
+                  <p key={index} className='pl-1 pt-4 font-normal dark:text-white    max-lg:text-xs    max-sm:pt-0 max-sm:text-xs max-sm:flex max-sm:font-light'>{obj?.main.temp_min.toFixed(0)}° / {obj?.main.temp_max.toFixed(0)}°</p>
                 </div>
                 <p key={index} className='text-sm font-thin dark:text-white    max-sm:text-xs max-sm:font-light'>{toDate(obj?.dt_txt.slice(0, 14))}</p>
               </div>

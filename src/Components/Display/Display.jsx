@@ -79,7 +79,7 @@ function Display() {
 
     return (
 
-        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl w-5/6 rounded-lg dark:shadow-slate-900         max-md:grid max-md:h-auto       max-sm:h-auto max-sm:grid max-sm:py-3'>
+        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl w-5/6 rounded-lg dark:shadow-slate-900         max-md:grid max-md:h-auto     max-sm:h-auto max-sm:grid max-sm:py-3'>
 
             <div id='popup' className={`transition-all duration-200  ${fade ? 'visible' : 'hidden'}  fixed top-0 flex justify-center pt-2     max-md:w-5/6 max-md:mx-auto      max-sm:mx-auto`}>
                 <div class="relative ">
@@ -93,7 +93,7 @@ function Display() {
                 </div>
             </div>
 
-            <div className='w-5/12      max-md:w-full        max-sm:container max-sm:mx-auto max-sm:h-4/6'>
+            <div className='w-5/12   max-lg:w-auto   max-md:w-auto max-md:mx-5      max-sm:container max-sm:mx-auto max-sm:h-4/6'>
                 <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg dark:bg-opacity-10 dark:bg-slate-500      max-lg:pb-6 max-lg:mx-auto max-lg:my-auto        max-md:pb-0 max-md:mx-auto max-md:h-16 max-md:px-0        max-sm:h-12 max-sm:w-full max-sm:px-6'>
                     <div className='py-4 relative          max-lg:flex-wrap max-lg:flex max-lg:mx-auto max-lg:mb-4 max-lg:w-full max-lg:my-auto             max-md:mb-0 max-md:block max-md:mx-20            max-sm:w-full max-sm:py-2 max-sm:mx-auto'>
                         <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none         max-lg:w-full     max-md:w-60     max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
@@ -131,7 +131,7 @@ function Display() {
 
             <div className='px-2'></div>
 
-            {details ? <div className="w-6/12     max-md:w-full max-md:mt-4     max-sm:mt-2 max-sm:mt-0 max-sm:grid-cols-none max-sm:w-72 max-sm:mx-auto max-sm:h-4/6">
+            {details ? <div className="w-5/12  max-lg:w-auto  max-md:w-auto max-md:mt-4 max-md:mx-5    max-sm:mt-2 max-sm:mt-0 max-sm:grid-cols-none max-sm:w-72 max-sm:mx-auto max-sm:h-4/6">
                 <div>
                     <div className='h-full text-xl font-thin flex justify-between items-center dark:text-white     max-lg:text-base       max-md:text-lg               max-sm:px-1 max-sm:text-xs max-sm:font-light'>
                         <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500      max-sm:px-1.5 max-sm:h-20'>
