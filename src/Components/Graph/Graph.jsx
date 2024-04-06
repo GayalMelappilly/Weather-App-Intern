@@ -35,11 +35,8 @@ function Graph(props) {
 
     return (
         <div className='flex justify-center align-middle h-full p-3 pt-4 relative      max-lg:py-10 max-lg:h-80     max-md:py-10 max-md:h-80         max-sm:h-72 max-sm:w-full max-sm:inline-block max-sm:align-middle max-sm:py-3'>
-            <div>
-                <p className='bg-opacity-10 p-1 px-2 rounded-lg shadow-[0px_0px_2px_0px_#00000024] dark:bg-opacity-10 dark:bg-slate-500 absolute right-0 text-base font-thin cursor-pointer top-2 dark:text-white'></p>
-            </div>
             <div onClick={() => { setHourlyForecast([null]) }}>
-                <p className='bg-opacity-10 p-1 px-2 rounded-lg shadow-[0px_0px_2px_0px_#00000024] dark:bg-opacity-10 dark:bg-slate-500 absolute right-0 text-base font-thin cursor-pointer top-2 dark:text-white'>Daily Forecast</p>
+                <p className='bg-opacity-10 p-1 px-2 rounded-lg shadow-[0px_0px_2px_0px_#00000024] dark:bg-opacity-10 dark:bg-slate-500 absolute right-0 text-base font-thin cursor-pointer top-2 dark:text-white  max-md:text-xs'>{window.innerWidth > 640 ? 'Daily Forecast' : 'Daily'}</p>
             </div>
 
             {hourlyForecast.length > 2 ? <Line

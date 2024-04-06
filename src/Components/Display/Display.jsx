@@ -129,7 +129,7 @@ function Display() {
 
             <div className="w-6/12      max-md:w-full max-md:mt-4    max-sm:mt-2 max-sm:mt-0 max-sm:grid-cols-none max-sm:w-72 max-sm:mx-auto max-sm:h-4/6">
                 <div>
-                    {details ? <div className='h-full text-base font-thin flex justify-between items-center dark:text-white     max-lg:text-base       max-md:text-lg               max-sm:px-1 max-sm:text-xs max-sm:font-light'>
+                    {details ? <div className='h-full text-base font-thin flex justify-between items-center dark:text-white     max-lg:text-base       max-md:text-base               max-sm:px-1 max-sm:text-xs max-sm:font-light'>
                         <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500      max-sm:px-1.5 max-sm:h-20'>
                             <BsWind size={30} className='mx-auto fill-slate-600 dark:fill-slate-400' />
                             <p className='text-center'>{details.wind.speed} km/h</p>
