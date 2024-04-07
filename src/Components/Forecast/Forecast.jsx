@@ -74,6 +74,16 @@ function Forecast() {
           data[35],
           data[36],
         ],
+        [
+          data[29],
+          data[30],
+          data[31],
+          data[32],
+          data[33],
+          data[34],
+          data[35],
+          data[36],
+        ],
       ])
     } else if (firstPod === 'n') {
       setDailyForecast([
@@ -128,6 +138,15 @@ function Forecast() {
           data[31],
           data[32],
           data[33],
+        ],
+        [
+          data[33],
+          data[34],
+          data[35],
+          data[36],
+          data[37],
+          data[38],
+          data[39],
         ],
         [
           data[33],

@@ -182,13 +182,6 @@ function Display() {
             </div>
                 :
                 <div className='bg-white w-6/12 bg-opacity-10 h-96 py-2 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500     max-md:mt-2 max-md:w-full    max-sm:mt-2 max-sm:w-full'></div>}
-
-            {/* Commit entry */}
-
-            {/* <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl w-5/6 rounded-lg dark:shadow-slate-900         max-md:grid max-md:h-auto       max-sm:h-auto max-sm:grid max-sm:py-3'>
-
-                
-            </div> */}
         </div>
 
 
