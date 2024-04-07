@@ -187,7 +187,7 @@ function Forecast() {
           else
 
             return (
-              <div
+              <div key={index}
                 id={`id-${index}`}
                 className={`forecast-card h-36 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-40 [&.active]:bg-opacity-40 dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500 dark:hover:bg-opacity-40 dark:active:bg-opacity-30 max-lg:h-36 max-md:h-28 max-sm:h-20 max-sm:px-3 max-sm:py-1 ${active === index ? 'active' : ''}`}
                 onClick={() => {

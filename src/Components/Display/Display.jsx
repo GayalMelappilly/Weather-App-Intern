@@ -21,12 +21,10 @@ function Display() {
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((pos) => {
-            console.log(pos.coords.latitude, pos.coords.longitude)
             axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&limit=5&appid=${API_KEY}`).then((response) => {
                 setCity(response.data[0].name)
-                console.log(response.data[0].name)
             }).catch((err) => {
-
+                setErr("This device doesn't support Geolocation. Allow location and try again.")
                 console.log(err.message, "CITY : " + city)
             })
         })
@@ -37,7 +35,6 @@ function Display() {
     useEffect(() => {
         if (!city) return;
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`).then((response) => {
-            console.log(response.data)
             setDetails(response.data)
             fetchForecast(response.data.coord.lat, response.data.coord.lon);
         }).catch((err) => {
@@ -85,7 +82,7 @@ function Display() {
         <div className='mx-auto h-screen bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl w-5/6 rounded-lg dark:shadow-slate-900         max-md:grid max-md:h-auto       max-sm:h-fit max-sm:grid max-sm:py-3'>
 
             <center>
-                <div id='popup' className="hidden fixed top-4 flex justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full pt-2  max-sm:w-3/6">
+                <div id='popup' className="hidden fixed top-4 flex justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full pt-2   max-md:w-9/12  max-sm:w-5/6">
                     <div class="relative w-full max-w-fit max-h-auto">
                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
@@ -98,10 +95,10 @@ function Display() {
                 </div>
             </center>
 
-            <div className='w-5/12      max-md:w-full        max-sm:container max-sm:mx-auto max-sm:h-4/6'>
-                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg dark:bg-opacity-10 dark:bg-slate-500      max-lg:pb-6 max-lg:mx-auto max-lg:my-auto        max-md:pb-0 max-md:mx-auto max-md:h-16 max-md:px-5     max-sm:mx-4 max-sm:py-1 max-sm:h-12 max-sm:w-auto'>
-                    <div className='py-4 relative flex mx-auto          max-lg:flex-wrap max-lg:flex max-lg:mx-auto max-lg:mb-4 max-lg:w-full max-lg:my-auto             max-md:mb-0 max-md:block max-md:mx-20         max-sm:w-auto max-sm:py-2'>
-                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 w-full bg-black bg-opacity-10 placeholder-white text-white outline-none         max-lg:w-full     max-md:w-60     max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
+            <div className='w-5/12      max-md:w-full        max-sm:container max-sm:mx-auto max-sm:h-4/6 max-sm:w-auto'>
+                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg dark:bg-opacity-10 dark:bg-slate-500      max-lg:pb-6 max-lg:mx-auto max-lg:my-auto        max-md:pb-0 max-md:mx-auto max-md:h-16 max-md:px-5     max-sm:px-4 max-sm:py-1 max-sm:h-12 max-sm:w-72'>
+                    <div className='py-4 relative flex mx-auto          max-lg:flex-wrap max-lg:flex max-lg:mx-auto max-lg:mb-4 max-lg:w-full max-lg:my-auto             max-md:mb-0 max-md:block max-md:mx-20        max-sm:mx-0 max-sm:flex max-sm:py-2'>
+                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 w-full bg-black bg-opacity-10 placeholder-white text-white outline-none         max-lg:w-full     max-md:w-60     max-sm:w-40 max-sm:h-6' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
                         <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none        max-lg:pb-6        max-md:pb-0'>
                             <FontAwesomeIcon className='text-white' icon={faSearch} />
                         </div>
@@ -131,7 +128,7 @@ function Display() {
                     </div>
                 </div>
                     :
-                    <div className='bg-white bg-opacity-10 h-5/6 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500        max-lg:h-66      max-md:h-72 max-md:w-auto    max-sm:w-auto'></div>}
+                    <div className='bg-white bg-opacity-10 h-5/6 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500        max-lg:h-66      max-md:h-72 max-md:w-auto    max-sm:w-72 max-sm:mx-auto'></div>}
             </div>
 
             <div className='px-2'></div>
@@ -183,7 +180,7 @@ function Display() {
                 </div>
             </div>
                 :
-                <div className='bg-white w-6/12 bg-opacity-10 h-full py-2 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500     max-lg:h-full     max-md:h-80 max-md:mt-2 max-md:w-full    max-sm:mt-2 max-sm:w-full'></div>}
+                <div className='bg-white w-6/12 bg-opacity-10 h-full py-2 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500     max-lg:h-full     max-md:h-80 max-md:mt-2 max-md:w-full    max-sm:mt-2 max-sm:w-72 max-sm:mx-auto'></div>}
         </div>
 
 
