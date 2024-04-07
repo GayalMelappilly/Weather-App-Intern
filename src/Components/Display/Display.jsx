@@ -178,7 +178,7 @@ function Display() {
                 </div>
 
                 <div className="py-2 max-sm:py-1"></div>
-                <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500         max-md:h-4/6         max-sm:h-auto max-sm:px-1'>
+                <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500         max-md:h-4/6       max-sm:h-auto max-sm:px-1'>
                     {city && <Graph />}
                 </div>
             </div>
