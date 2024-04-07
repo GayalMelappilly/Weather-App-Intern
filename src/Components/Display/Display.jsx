@@ -100,7 +100,7 @@ function Display() {
 
             <div className='w-5/12      max-md:w-full        max-sm:container max-sm:mx-auto max-sm:h-4/6'>
                 <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg dark:bg-opacity-10 dark:bg-slate-500      max-lg:pb-6 max-lg:mx-auto max-lg:my-auto        max-md:pb-0 max-md:mx-auto max-md:h-16 max-md:px-5     max-sm:mx-4 max-sm:py-1 max-sm:h-12 max-sm:w-auto'>
-                    <div className='py-4 relative flex mx-auto          max-lg:flex-wrap max-lg:flex max-lg:mx-auto max-lg:mb-4 max-lg:w-full max-lg:my-auto             max-md:mb-0 max-md:block max-md:mx-20         max-sm:w-auto max-sm:py-2 max-sm:mx-auto'>
+                    <div className='py-4 relative flex mx-auto          max-lg:flex-wrap max-lg:flex max-lg:mx-auto max-lg:mb-4 max-lg:w-full max-lg:my-auto             max-md:mb-0 max-md:block max-md:mx-20         max-sm:w-auto max-sm:py-2'>
                         <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 w-full bg-black bg-opacity-10 placeholder-white text-white outline-none         max-lg:w-full     max-md:w-60     max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
                         <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none        max-lg:pb-6        max-md:pb-0'>
                             <FontAwesomeIcon className='text-white' icon={faSearch} />
