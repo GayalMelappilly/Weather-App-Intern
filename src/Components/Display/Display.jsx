@@ -136,7 +136,7 @@ function Display() {
 
             <div className='px-2'></div>
 
-            {details ? <div className="w-6/12     max-md:w-full max-md:mt-4     max-sm:mt-2 max-sm:mt-0 max-sm:grid-cols-none max-sm:w-72 max-sm:mx-auto max-sm:h-4/6">
+            {details ? <div className="w-6/12     max-md:w-full max-md:mt-4     max-sm:mt-2 max-sm:mt-0 max-sm:grid-cols-none max-sm:w-full max-sm:mx-auto max-sm:h-4/6">
                 <div>
                     <div className='h-full text-xl font-thin flex justify-between items-center dark:text-white     max-lg:text-base       max-md:text-lg               max-sm:px-1 max-sm:text-xs max-sm:font-light'>
                         <div className='px-3 py-4 bg-white w-full bg-opacity-10 h-24 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500      max-sm:px-1.5 max-sm:h-20'>
@@ -178,7 +178,7 @@ function Display() {
                 </div>
 
                 <div className="py-2 max-sm:py-1"></div>
-                <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500         max-md:h-4/6       max-sm:h-auto max-sm:px-1'>
+                <div className='px-10 bg-white bg-opacity-10 h-4/6 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500         max-md:h-4/6 max-md:order-first        max-sm:h-auto max-sm:px-1'>
                     {city && <Graph />}
                 </div>
             </div>

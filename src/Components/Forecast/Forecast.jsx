@@ -189,17 +189,17 @@ function Forecast() {
             return (
               <div
                 id={`id-${index}`}
-                className={`forecast-card h-30 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-40 [&.active]:bg-opacity-40 dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500 dark:hover:bg-opacity-40 dark:active:bg-opacity-30 max-lg:h-36 max-md:h-28 max-sm:h-20 max-sm:px-3 max-sm:py-1 ${active === index ? 'active' : ''}`}
+                className={`forecast-card h-36 p-2 bg-white bg-opacity-10 rounded-lg shadow-lg shadow-black-400 hover:bg-opacity-40 [&.active]:bg-opacity-40 dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500 dark:hover:bg-opacity-40 dark:active:bg-opacity-30 max-lg:h-36 max-md:h-28 max-sm:h-20 max-sm:px-3 max-sm:py-1 ${active === index ? 'active' : ''}`}
                 onClick={() => {
                   setActive(index);
                   setHourlyForecast(hourly[index]);
                 }}
               >
-                <div className='flex     max-sm:grid'>
+                <div className='flex h-24     max-sm:grid'>
                   <Icon for='forecast' icon={obj?.weather[0].icon} />
-                  <p key={index} className='pl-1 pt-4 font-normal dark:text-white    max-lg:text-xs    max-sm:pt-0 max-sm:text-xs max-sm:flex max-sm:font-light'>{obj?.main.temp_min.toFixed(0)}° / {obj?.main.temp_max.toFixed(0)}°</p>
+                  <p key={index} className='pl-1 pt-4 font-normal text-lg dark:text-white    max-lg:text-xs    max-sm:pt-0 max-sm:text-xs max-sm:flex max-sm:font-light'>{obj?.main.temp_min.toFixed(0)}° / {obj?.main.temp_max.toFixed(0)}°</p>
                 </div>
-                <p key={index} className='text-sm font-thin dark:text-white    max-sm:text-xs max-sm:font-light'>{toDate(obj?.dt_txt.slice(0, 14))}</p>
+                <p key={index} className='text-base font-thin dark:text-white    max-sm:text-xs max-sm:font-light'>{toDate(obj?.dt_txt.slice(0, 14))}</p>
               </div>
             )
         }

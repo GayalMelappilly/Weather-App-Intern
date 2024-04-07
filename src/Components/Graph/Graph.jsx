@@ -105,41 +105,6 @@ function Graph(props) {
                     }}
                 />
             }
-
-            {/* <Line
-                className='h-full'
-                data={{
-                    labels: graph.map((obj) => {
-                        if(toDate(obj?.dt_txt?.slice(0, 14)) === "Invalid Date")
-                            return null
-                        else
-                           return toDate(obj?.dt_txt?.slice(0, 14))
-                    }),
-                    datasets: [
-                        {
-                            label: 'Min',
-                            data: graph.map((obj) => obj?.main?.temp_min || 0),
-                        },
-                        {
-                            label: 'Max',
-                            data: graph.map((obj) => obj?.main?.temp_max || 0)
-                        },
-                        {
-                            label: "Humidity",
-                            data: graph.map((obj) => obj?.main?.humidity || 0)
-                        }
-                    ],
-                }}
-                height={"100%"}
-                width={"100%"}
-                options={{
-                    maintainAspectRatio: false
-                }}
-            /> */}
-
-
-
-
         </div>
     )
 }
