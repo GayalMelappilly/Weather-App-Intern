@@ -22,7 +22,7 @@ function Display() {
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((pos) => {
             console.log(pos.coords.latitude, pos.coords.longitude)
-            axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&limit=5&appid=${API_KEY}`).then((response) => {
+            axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&limit=5&appid=${API_KEY}`).then((response) => {
                 setCity(response.data[0].name)
                 console.log(response.data[0].name)
             }).catch((err) => {
