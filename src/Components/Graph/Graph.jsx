@@ -40,7 +40,7 @@ function Graph(props) {
                 setHourlyForecast([null]) 
                 $('.forecast-card').removeClass('active')
                 }}>
-                <p className='bg-opacity-10 p-1 px-2 rounded-lg shadow-[0px_0px_2px_0px_#00000024] dark:bg-opacity-10 dark:bg-slate-500 absolute right-0 text-base font-thin cursor-pointer top-2 dark:text-white select-none  active:bg-opacity-30 hover:bg-cyan-100 dark:active:bg-opacity-20 dark:hover:bg-opacity-30   max-ms:text-xs'>{window.innerWidth > 640 ? "Daily Forecast" : "Daily"}</p>
+                <p className='bg-opacity-10 p-1 px-2 rounded-lg shadow-[0px_0px_2px_0px_#00000024] dark:bg-opacity-10 dark:bg-slate-500 absolute -right-8 text-base font-thin cursor-pointer top-2 dark:text-white select-none  active:bg-opacity-30 hover:bg-cyan-100 dark:active:bg-opacity-20 dark:hover:bg-opacity-30   max-ms:text-xs'>{window.innerWidth > 640 ? "Daily Forecast" : "Daily"}</p>
             </div>
 
             {hourlyForecast.length > 2 ? <Line

@@ -195,7 +195,7 @@ function Forecast() {
                   setHourlyForecast(hourly[index]);
                 }}
               >
-                <div className='flex h-24     max-sm:grid'>
+                <div className='flex h-24    max-lg:h-20 max-sm:grid'>
                   <Icon for='forecast' icon={obj?.weather[0].icon} />
                   <p key={index} className='pl-1 pt-4 font-normal text-lg dark:text-white    max-lg:text-xs    max-sm:pt-0 max-sm:text-xs max-sm:flex max-sm:font-light'>{obj?.main.temp_min.toFixed(0)}° / {obj?.main.temp_max.toFixed(0)}°</p>
                 </div>
