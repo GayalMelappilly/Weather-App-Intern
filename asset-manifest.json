@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Weather-app-intern/static/css/main.0786befc.css",
-    "main.js": "/Weather-app-intern/static/js/main.e1c57dc7.js",
+    "main.css": "/Weather-app-intern/static/css/main.0d42c6c7.css",
+    "main.js": "/Weather-app-intern/static/js/main.d7ce60c4.js",
     "static/media/GeosansLight.ttf": "/Weather-app-intern/static/media/GeosansLight.b98db94c1f84ffb28eca.ttf",
     "static/media/penna.otf": "/Weather-app-intern/static/media/penna.c0b5853654dc22407599.otf",
     "static/media/13d.svg": "/Weather-app-intern/static/media/13d.2db0eed65066ae20a2032556e9e1595e.svg",
@@ -25,11 +25,11 @@
     "static/media/04d.svg": "/Weather-app-intern/static/media/04d.47e617c4a6e7d0e2b25ecb7d554b0a4c.svg",
     "static/media/04n.svg": "/Weather-app-intern/static/media/04n.47e617c4a6e7d0e2b25ecb7d554b0a4c.svg",
     "static/media/barometer.svg": "/Weather-app-intern/static/media/barometer.1a6fa988db4c678bf694ce909fca9961.svg",
-    "main.0786befc.css.map": "/Weather-app-intern/static/css/main.0786befc.css.map",
-    "main.e1c57dc7.js.map": "/Weather-app-intern/static/js/main.e1c57dc7.js.map"
+    "main.0d42c6c7.css.map": "/Weather-app-intern/static/css/main.0d42c6c7.css.map",
+    "main.d7ce60c4.js.map": "/Weather-app-intern/static/js/main.d7ce60c4.js.map"
   },
   "entrypoints": [
-    "static/css/main.0786befc.css",
-    "static/js/main.e1c57dc7.js"
+    "static/css/main.0d42c6c7.css",
+    "static/js/main.d7ce60c4.js"
   ]
 }
