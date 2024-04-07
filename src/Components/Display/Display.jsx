@@ -26,10 +26,12 @@ function Display() {
                 setCity(response.data[0].name)
                 console.log(response.data[0].name)
             }).catch((err) => {
+
                 console.log(err.message, "CITY : " + city)
             })
         })
     }, [])
+
 
 
     useEffect(() => {
@@ -40,7 +42,7 @@ function Display() {
             fetchForecast(response.data.coord.lat, response.data.coord.lon);
         }).catch((err) => {
             console.log("ERR : " + err.message)
-            setErr(err)
+            setErr("Couldn't get the weather condition from the specified location")
             $('#popup').fadeIn('fast')
             setTimeout(() => {
                 $('#popup').fadeOut('slow')
@@ -80,7 +82,7 @@ function Display() {
 
     return (
 
-        <div className='mx-auto h-5/6 bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl w-5/6 rounded-lg dark:shadow-slate-900         max-md:grid max-md:h-auto       max-sm:h-auto max-sm:grid max-sm:py-3'>
+        <div className='mx-auto h-screen bg-black bg-opacity-10 justify-center flex py-10 shadow-2xl w-5/6 rounded-lg dark:shadow-slate-900         max-md:grid max-md:h-auto       max-sm:h-auto max-sm:grid max-sm:py-3'>
 
             <center>
                 <div id='popup' className="hidden fixed top-4 flex justify-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full pt-2  max-sm:w-3/6">
@@ -88,7 +90,7 @@ function Display() {
                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                 <h3 class="text-base font-medium text-gray-900 dark:text-white  max-sm:text-xs">
-                                    Couldn't get the weather condition from the specified location
+                                    {err}
                                 </h3>
                             </div>
                         </div>
@@ -97,14 +99,14 @@ function Display() {
             </center>
 
             <div className='w-5/12      max-md:w-full        max-sm:container max-sm:mx-auto max-sm:h-4/6'>
-                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg dark:bg-opacity-10 dark:bg-slate-500      max-lg:pb-6 max-lg:mx-auto max-lg:my-auto        max-md:pb-0 max-md:mx-auto max-md:h-16 max-md:px-0        max-sm:h-12 max-sm:w-full max-sm:px-6'>
-                    <div className='py-4 relative          max-lg:flex-wrap max-lg:flex max-lg:mx-auto max-lg:mb-4 max-lg:w-full max-lg:my-auto             max-md:mb-0 max-md:block max-md:mx-20            max-sm:w-full max-sm:py-2 max-sm:mx-auto'>
-                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 bg-black bg-opacity-10 placeholder-white text-white outline-none         max-lg:w-full     max-md:w-60     max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
+                <div className='px-10 flex items-center bg-white bg-opacity-10 h-1/6 rounded-lg shadow-lg dark:bg-opacity-10 dark:bg-slate-500      max-lg:pb-6 max-lg:mx-auto max-lg:my-auto        max-md:pb-0 max-md:mx-auto max-md:h-16 max-md:px-0       max-sm:h-12 max-sm:w-full max-sm:px-6'>
+                    <div className='py-4 relative flex mx-auto          max-lg:flex-wrap max-lg:flex max-lg:mx-auto max-lg:mb-4 max-lg:w-full max-lg:my-auto             max-md:mb-0 max-md:block max-md:mx-20         max-sm:w-full max-sm:py-2 max-sm:mx-auto'>
+                        <input className='pl-10 pr-4 py-2 rounded-lg outfit-regular rounded-lg h-8 w-full bg-black bg-opacity-10 placeholder-white text-white outline-none         max-lg:w-full     max-md:w-60     max-sm:w-40 max-sm:h-6 ' value={input} onChange={(e) => { setInput(e.target.value) }} type="text" id='city' placeholder='Search for location' />
                         <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none        max-lg:pb-6        max-md:pb-0'>
                             <FontAwesomeIcon className='text-white' icon={faSearch} />
                         </div>
                         &nbsp;
-                        <button onClick={(e) => { setCity(input) }} className='px-6 bg-black absolute bg-opacity-10 rounded-lg h-8 text-white            max-lg:mt-10 max-lg:w-full       max-md:ml-0 max-md:w-auto max-md:mt-0       max-sm:px-5  max-sm:h-6'>Search</button>
+                        <button onClick={(e) => { setCity(input) }} className=' px-6 bg-black bg-opacity-10 rounded-lg h-8 text-white            max-lg:mt-10 max-lg:w-full max-lg:absolute     max-md:static  max-md:ml-0 max-md:w-auto max-md:mt-0       max-sm:px-5  max-sm:h-6'>Search</button>
                     </div>
                 </div>
                 <div className="py-2 max-sm:py-1"></div>
@@ -129,7 +131,7 @@ function Display() {
                     </div>
                 </div>
                     :
-                    <div className='bg-white bg-opacity-10 h-5/6 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500    max-md:h-48 max-md:w-full   max-sm:h-44 max-sm:w-72 '></div>}
+                    <div className='bg-white bg-opacity-10 h-5/6 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500        max-lg:h-66      max-md:h-72 max-md:w-auto    max-sm:w-auto '></div>}
             </div>
 
             <div className='px-2'></div>
@@ -181,7 +183,7 @@ function Display() {
                 </div>
             </div>
                 :
-                <div className='bg-white w-6/12 bg-opacity-10 h-96 py-2 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500     max-md:mt-2 max-md:w-full    max-sm:mt-2 max-sm:w-full'></div>}
+                <div className='bg-white w-6/12 bg-opacity-10 h-full py-2 rounded-lg shadow-lg dark:shadow-slate-900 dark:bg-opacity-10 dark:bg-slate-500     max-lg:h-full     max-md:h-80 max-md:mt-2 max-md:w-full    max-sm:mt-2 max-sm:w-full'></div>}
         </div>
 
 
