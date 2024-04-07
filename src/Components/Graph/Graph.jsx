@@ -35,12 +35,13 @@ function Graph(props) {
     }
 
     return (
-        <div className='flex justify-center align-middle h-full p-3 pt-4 relative      max-lg:py-10 max-lg:h-80     max-md:py-10 max-md:h-80         max-sm:h-72 max-sm:w-full max-sm:inline-block max-sm:align-middle max-sm:py-3'>
+        <div className='flex justify-center align-middle h-full p-3 pt-4 relative      max-lg:py-10 max-lg:h-80     max-md:py-10 max-md:h-80        max-sm:mt-4 max-sm:h-64 max-sm:w-full max-sm:inline-block max-sm:align-middle max-sm:py-3'>
             <div onClick={() => { 
                 setHourlyForecast([null]) 
                 $('.forecast-card').removeClass('active')
-                }}>
-                <p className='bg-opacity-10 p-1 px-2 rounded-lg shadow-[0px_0px_2px_0px_#00000024] dark:bg-opacity-10 dark:bg-slate-500 absolute -right-8 text-base font-thin cursor-pointer top-2 dark:text-white select-none  active:bg-opacity-30 hover:bg-cyan-100 dark:active:bg-opacity-20 dark:hover:bg-opacity-30   max-ms:text-xs'>{window.innerWidth > 640 ? "Daily Forecast" : "Daily"}</p>
+                }}
+                className='max-sm:w-full max-sm:absolute max-sm:top-0'>
+                <p className='bg-opacity-10 p-1 px-2 rounded-lg shadow-[0px_0px_2px_0px_#00000024] dark:bg-opacity-10 dark:bg-slate-500 absolute -right-8 text-base font-thin cursor-pointer top-2 dark:text-white select-none  active:bg-opacity-20 hover:bg-slate-200 dark:active:bg-opacity-20 dark:hover:bg-opacity-30  max-sm:top-0 max-sm:mr-12 max-sm:mb-20 max-ms:text-xs'>{window.innerWidth > 640 ? "Daily Forecast" : "Daily"}</p>
             </div>
 
             {hourlyForecast.length > 2 ? <Line
